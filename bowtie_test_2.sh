@@ -10,10 +10,10 @@
 #SBATCH --mail-type=END,FAIL                        # Mail events
 
 # make output directory
-mkdir -p /home/las80898/GENE8940_parallel/bowtie_test
+mkdir -p /home/las80898/GENE8940_parallel_2/bowtie_test
 
 # change directory into output directory
-cd /home/las80898/GENE8940_parallel/bowtie_test
+cd /home/las80898/GENE8940_parallel_2/bowtie_test
 
 # copy test files to output directory
 cp -rp /usr/local/training/Teach/* .
