@@ -1,0 +1,17 @@
+# this is a working pipeline for my analysis
+
+# conda create bonasa_env
+conda activate bonasa_env
+# conda config --add channels bioconda
+# conda config --add channels conda-forge
+# conda install -y samtools sra-tools bwa bcftools busco quast fastp angsd
+# conda install -y glimmerhmm #not sure if I'll use this
+
+# conda update -n base -c conda-forge conda
+
+Configure sra toolkit
+# vdb-config -i
+
+## quast
+quast /path/to/focal_reference.fa -o /path/to/quast_output --large --threads 8
+--glimmer # genefinding HMM
