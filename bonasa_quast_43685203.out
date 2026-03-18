@@ -1,0 +1,32 @@
+/home/las80898/conda/envs/bonasa_env/bin/quast Bumbellus.assembly.fa -o /scratch/las80898/bonasa --large --glimmer --split-scaffolds --threads 8
+
+Version: 5.3.0
+
+System information:
+  OS: Linux-5.14.0-503.31.1.el9_5.x86_64-x86_64-with-glibc2.34 (linux_64)
+  Python version: 3.12.13
+  CPUs number: 32
+
+Started: 2026-03-18 09:27:20
+
+Logging to /scratch/las80898/bonasa/quast.log
+
+CWD: /scratch/las80898/bonasa
+Main parameters: 
+  MODE: large, threads: 8, eukaryotic: true, split scaffolds: true, min contig length: 3000, \
+  min alignment length: 500, min alignment IDY: 95.0, ambiguity: one, min local misassembly length: 200, \
+  min extensive misassembly length: 7000
+
+Contigs:
+  Pre-processing...
+  Bumbellus.assembly.fa ==> Bumbellus.assembly
+    breaking scaffolds into contigs:
+      460 scaffolds (Bumbellus.assembly) were broken into 529 contigs (Bumbellus.assembly_broken)
+
+2026-03-18 09:28:47
+Running Basic statistics processor...
+  Contig files: 
+    1  Bumbellus.assembly
+    2  Bumbellus.assembly_broken
+  Calculating N50 and L50...
+    1  Bumbellus.assembly, N50 = 69101496, L50 = 5, auN = 80151842.6, Total length = 1003989631, GC % = 41.46, # N's per 100 kbp =  0.69
