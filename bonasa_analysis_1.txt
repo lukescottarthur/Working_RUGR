@@ -19,4 +19,18 @@ Configure sra toolkit
 # Plot the busco results (not too informative)
 # busco --plot busco_test_1/
 
-# Download files from NCBI
+
+## Download files from NCBI
+
+# generate list of SRR numbers
+esearch -db sra -query "PRJNA1008718" | efetch -format runinfo | cut -d ',' -f 1 | tail -n +2 > bonasa_SRR.numbers
+
+# prefetch
+prefetch -O ./output_directory --option-file SRR.numbers   
+prefetch -0 $OUTDIR --option-file bonasa_SRR.numbers
+
+# validate
+vdb-validate
+
+# Extract files
+fastq-dump --split-3 

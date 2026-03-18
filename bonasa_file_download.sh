@@ -25,6 +25,25 @@ then
     mkdir -p $OUTDIR
 fi
 
-# Change directory into output directory
-cd $OUTDIR
 
+# Download reads
+prefetch -0 $OUTDIR --option-file bonasa_SRR.numbers
+
+
+
+
+
+
+
+
+# Map reads to reference and store in bam format
+bwa mem -t 6 Bumbellus.assembly.fa SRR8082143_1.fastq SRR8082143_2.fastq | samtools sort -O BAM --threads 6 - > SRR25747755.sorted.bam
+
+# Index bam file
+samtools index --threads 6 SRR8082143.sorted.bam
+
+# Compute genotype likelihoods (map quality > 60; quality score > 40; mapped reads > 10)
+bcftools mpileup -Ou --threads 6 --min-MQ 60 -f ecoli_MG1655.fasta SRR8082143.sorted.bam | bcftools call --threads 6 -mv -Ou --ploidy 1 - | bcftools filter -Oz -e 'QUAL<40 || DP<10' > SRR8082143_Final.vcf.gz
+
+# Generate index file
+bcftools index SRR8082143_Final.vcf.gz

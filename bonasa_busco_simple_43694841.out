@@ -1,0 +1,52 @@
+2026-03-18 15:51:12 INFO:	***** Start a BUSCO v6.0.0 analysis, current time: 03/18/2026 15:51:12 *****
+2026-03-18 15:51:12 INFO:	Configuring BUSCO with local environment
+2026-03-18 15:51:12 INFO:	Running genome mode
+2026-03-18 15:51:12 INFO:	Downloading information on latest versions of BUSCO data...
+2026-03-18 15:51:15 INFO:	Input file is /scratch/las80898/bonasa_busco_simple/Bumbellus.assembly.fa
+2026-03-18 15:51:15 INFO:	Downloading file 'https://busco-data.ezlab.org/v5/data/lineages/galloanserae_odb12.2025-07-01.tar.gz'
+2026-03-18 15:51:24 INFO:	Decompressing file '/scratch/las80898/bonasa_busco_simple/busco_downloads/lineages/galloanserae_odb12.tar.gz'
+2026-03-18 15:53:03 INFO:	Running BUSCO using lineage dataset galloanserae_odb12 (eukaryota, 2025-07-01)
+2026-03-18 15:53:03 INFO:	Running 1 job(s) on bbtools, starting at 03/18/2026 15:53:03
+2026-03-18 15:53:09 INFO:	[bbtools]	1 of 1 task(s) completed
+2026-03-18 15:53:10 INFO:	Running 1 job(s) on miniprot_index, starting at 03/18/2026 15:53:10
+2026-03-18 15:53:28 INFO:	[miniprot_index]	1 of 1 task(s) completed
+2026-03-18 15:53:30 INFO:	Running 1 job(s) on miniprot_align, starting at 03/18/2026 15:53:30
+2026-03-18 15:58:57 INFO:	[miniprot_align]	1 of 1 task(s) completed
+2026-03-18 15:59:16 INFO:	***** Run HMMER on gene sequences *****
+2026-03-18 15:59:43 INFO:	Running 6838 job(s) on hmmsearch, starting at 03/18/2026 15:59:43
+2026-03-18 16:00:20 INFO:	[hmmsearch]	684 of 6838 task(s) completed
+2026-03-18 16:00:25 INFO:	[hmmsearch]	1368 of 6838 task(s) completed
+2026-03-18 16:00:30 INFO:	[hmmsearch]	2052 of 6838 task(s) completed
+2026-03-18 16:00:35 INFO:	[hmmsearch]	2736 of 6838 task(s) completed
+2026-03-18 16:00:39 INFO:	[hmmsearch]	3419 of 6838 task(s) completed
+2026-03-18 16:00:44 INFO:	[hmmsearch]	4103 of 6838 task(s) completed
+2026-03-18 16:00:48 INFO:	[hmmsearch]	4787 of 6838 task(s) completed
+2026-03-18 16:00:53 INFO:	[hmmsearch]	5471 of 6838 task(s) completed
+2026-03-18 16:00:56 INFO:	[hmmsearch]	6155 of 6838 task(s) completed
+2026-03-18 16:01:03 INFO:	[hmmsearch]	6838 of 6838 task(s) completed
+2026-03-18 16:01:14 INFO:	17 candidate overlapping regions found
+2026-03-18 16:01:14 INFO:	69436 exons in total
+2026-03-18 16:01:26 WARNING:	452 of 6822 Complete matches (6.6%) contain internal stop codons in Miniprot gene predictions
+2026-03-18 16:02:17 INFO:	
+
+    -------------------------------------------------------------------------------------------
+    |Results from dataset galloanserae_odb12                                                   |
+    -------------------------------------------------------------------------------------------
+    |C:99.7%[S:99.7%,D:0.1%],F:0.0%,M:0.2%,n:6841,E:6.6%                                       |
+    |6822    Complete BUSCOs (C)    (of which 452 contain internal stop codons)                |
+    |6818    Complete and single-copy BUSCOs (S)                                               |
+    |4    Complete and duplicated BUSCOs (D)                                                   |
+    |2    Fragmented BUSCOs (F)                                                                |
+    |17    Missing BUSCOs (M)                                                                  |
+    |6841    Total BUSCO groups searched                                                       |
+    -------------------------------------------------------------------------------------------
+2026-03-18 16:02:17 INFO:	BUSCO analysis done with WARNING(s). Total running time: 662 seconds
+
+***** Summary of warnings: *****
+2026-03-18 16:01:26 WARNING:busco.busco_tools.hmmer	452 of 6822 Complete matches (6.6%) contain internal stop codons in Miniprot gene predictions
+
+2026-03-18 16:02:17 INFO:	Results written in /scratch/las80898/bonasa_busco_simple/busco_test_1
+2026-03-18 16:02:17 INFO:	For assistance with interpreting the results, please consult the userguide: https://busco.ezlab.org/busco_userguide.html
+
+2026-03-18 16:02:17 INFO:	Visit this page https://gitlab.com/ezlab/busco#how-to-cite-busco to see how to cite BUSCO
+2026-03-18 16:02:19 INFO:	Thank you for using BUSCO! Anonymous usage data is gathered to improve the tool. You may opt out with --opt-out-run-stats.

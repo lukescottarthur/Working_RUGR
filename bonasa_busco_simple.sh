@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=bonasa_busco                      # Job name 
+#SBATCH --job-name=bonasa_busco_simple                      # Job name 
 #SBATCH --partition=batch                           # Partition name 
 #SBATCH --ntasks=1                                  # 1 task (process)
 #SBATCH --cpus-per-task=8                           # CPU core count per task
@@ -17,7 +17,7 @@ conda activate bonasa_env
 
 # configure SRA toolkit before running script with 'vdb-config -i'
 
-OUTDIR="/scratch/las80898/bonasa_busco_1"
+OUTDIR="/scratch/las80898/bonasa_busco_simple"
 
 # If output directory doesn't exist, create it
 if [ ! -d $OUTDIR ]
@@ -32,4 +32,4 @@ cd $OUTDIR
 cp /home/las80898/bonasa/Bumbellus.assembly.fa $OUTDIR
 
 # Run busco
-busco -i Bumbellus.assembly.fa -o busco_test_1 -f --cpu 8 --mode genome -l galloanserae_odb12 --augustus --augustus_species chicken
+busco -i Bumbellus.assembly.fa -o busco_test_1 -f --cpu 8 --mode genome -l galloanserae_odb12
