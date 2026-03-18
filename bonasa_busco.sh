@@ -17,7 +17,7 @@ conda activate bonasa_env
 
 # configure SRA toolkit before running script with 'vdb-config -i'
 
-OUTDIR="/scratch/las80898/bonasa/busco"
+OUTDIR="/scratch/las80898/bonasa_busco_1"
 
 # If output directory doesn't exist, create it
 if [ ! -d $OUTDIR ]
@@ -27,3 +27,9 @@ fi
 
 # Change directory into output directory
 cd $OUTDIR
+
+# Copy assembly into OUTDIR
+cp /home/las80898/bonasa/Bumbellus.assembly.fa $OUTDIR
+
+# Run busco
+busco -i Bumbellus.assembly.fa -o busco_test_1 --cpu 8 --mode genome -l galloanserae_odb12

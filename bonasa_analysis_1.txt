@@ -10,7 +10,10 @@ conda activate bonasa_env
 Configure sra toolkit
 # vdb-config -i
 
-## quast
-quast /path/to/focal_reference.fa -o /path/to/quast_output --large --threads 8
---glimmer # genefinding HMM
---split-scaffolds # adds contig evaluation if broken version is not equal to original assembly
+# Run quast
+# sbatch bonasa_quast.sh
+
+# Run busco
+# sbatch bonasa_busco.sh
+
+

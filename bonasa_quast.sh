@@ -17,7 +17,7 @@ conda activate bonasa_env
 
 # configure SRA toolkit before running script with 'vdb-config -i'
 
-OUTDIR="/scratch/las80898/bonasa"
+OUTDIR="/scratch/las80898/bonasa_quast_1"
 
 # If output directory doesn't exist, create it
 if [ ! -d $OUTDIR ]
