@@ -27,7 +27,7 @@ fi
 
 
 # Download reads
-prefetch -0 $OUTDIR --option-file bonasa_SRR.numbers
+prefetch -O $OUTDIR --option-file bonasa_SRR.numbers
 
 
 
