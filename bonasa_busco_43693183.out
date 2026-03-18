@@ -1,0 +1,15 @@
+2026-03-18 14:17:03 INFO:	***** Start a BUSCO v6.0.0 analysis, current time: 03/18/2026 14:17:03 *****
+2026-03-18 14:17:03 INFO:	Configuring BUSCO with local environment
+2026-03-18 14:17:03 INFO:	Running genome mode
+2026-03-18 14:17:04 INFO:	Downloading information on latest versions of BUSCO data...
+2026-03-18 14:17:25 INFO:	Input file is /scratch/las80898/bonasa_busco_1/Bumbellus.assembly.fa
+2026-03-18 14:17:25 INFO:	Downloading file 'https://busco-data.ezlab.org/v5/data/lineages/galloanserae_odb12.2025-07-01.tar.gz'
+2026-03-18 14:17:36 INFO:	Decompressing file '/scratch/las80898/bonasa_busco_1/busco_downloads/lineages/galloanserae_odb12.tar.gz'
+2026-03-18 14:18:45 INFO:	Running BUSCO using lineage dataset galloanserae_odb12 (eukaryota, 2025-07-01)
+2026-03-18 14:18:45 INFO:	Running 1 job(s) on bbtools, starting at 03/18/2026 14:18:45
+2026-03-18 14:18:51 INFO:	[bbtools]	1 of 1 task(s) completed
+2026-03-18 14:18:51 INFO:	Running 1 job(s) on miniprot_index, starting at 03/18/2026 14:18:51
+2026-03-18 14:19:19 INFO:	[miniprot_index]	1 of 1 task(s) completed
+2026-03-18 14:19:20 INFO:	Running 1 job(s) on miniprot_align, starting at 03/18/2026 14:19:20
+2026-03-18 14:25:06 INFO:	[miniprot_align]	1 of 1 task(s) completed
+2026-03-18 14:25:25 INFO:	***** Run HMMER on gene sequences *****
