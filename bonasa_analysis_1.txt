@@ -16,4 +16,7 @@ Configure sra toolkit
 # Run busco
 # sbatch bonasa_busco.sh
 
+# Plot the busco results (not too informative)
+# busco --plot busco_test_1/
 
+# Download files from NCBI
