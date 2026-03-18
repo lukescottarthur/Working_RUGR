@@ -1,0 +1,7 @@
+2026-03-18 16:44:27 INFO:	***** Start a BUSCO v6.0.0 analysis, current time: 03/18/2026 16:44:27 *****
+2026-03-18 16:44:27 INFO:	Configuring BUSCO with local environment
+2026-03-18 16:44:27 INFO:	Running genome mode
+2026-03-18 16:44:27 INFO:	'Force' option selected; overwriting previous results directory
+2026-03-18 16:44:28 INFO:	Downloading information on latest versions of BUSCO data...
+2026-03-18 16:44:31 INFO:	Input file is /scratch/las80898/bonasa_busco_1/Bumbellus.assembly.fa
+2026-03-18 16:44:31 INFO:	The local file or folder /scratch/las80898/bonasa_busco_1/busco_downloads/lineages/galloanserae_odb12 is the last available version.
