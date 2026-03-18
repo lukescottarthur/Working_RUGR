@@ -2,12 +2,10 @@
 
 # conda create bonasa_env
 conda activate bonasa_env
+# conda update -n base -c conda-forge conda
 # conda config --add channels bioconda
 # conda config --add channels conda-forge
-# conda install -y samtools sra-tools bwa bcftools busco quast fastp angsd
-# conda install -y glimmerhmm #not sure if I'll use this
-
-# conda update -n base -c conda-forge conda
+# conda install -y samtools sra-tools bwa bcftools busco quast fastp angsd python=3.12 glimmerhmm
 
 Configure sra toolkit
 # vdb-config -i
