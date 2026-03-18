@@ -32,4 +32,4 @@ cd $OUTDIR
 cp /home/las80898/bonasa/Bumbellus.assembly.fa $OUTDIR
 
 # Run Quast
-quast Bumbellus.assembly.fa -o $OUTDIR --large --threads --glimmer --split-scaffolds --threads 8
+quast Bumbellus.assembly.fa -o $OUTDIR --large --glimmer --split-scaffolds --threads 8 
