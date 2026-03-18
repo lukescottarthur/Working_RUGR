@@ -15,3 +15,4 @@ Configure sra toolkit
 ## quast
 quast /path/to/focal_reference.fa -o /path/to/quast_output --large --threads 8
 --glimmer # genefinding HMM
+--split-scaffolds # adds contig evaluation if broken version is not equal to original assembly
