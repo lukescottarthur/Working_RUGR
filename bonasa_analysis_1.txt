@@ -30,10 +30,40 @@ prefetch -O ./output_directory --option-file SRR.numbers
 prefetch -0 $OUTDIR --option-file bonasa_SRR.numbers
 
 # validate (for loop) with vdb-validate
-for
-i in /home/las80898/bonasa/reads
+OUTDIR="/home/las80898/bonasa/reads"
+cd $OUTDIR
+
+for SRR in $OUTDIR
+do
+vdb-validate SRR*
+done
+
+# Extract files with fastq-dump
+OUTDIR="/home/las80898/bonasa/reads"
+cd $OUTDIR
+
+# cycle through directories and use vdb-validate
+for SRR in $OUTDIR
+do
+fastq-dump --split-3 SRR*
+done
+
+## QC with fastp
+note: below copied from tutorial
+fastp --help
+OUTDIR=/work/gene8940/las80898/fastp
+i=`basename $R1`
+sample=`basename $i _1.fastq.gz`
+fastp --thread 6 -D -h $OUTDIR/$sample.fastp.html -j $OUTDIR/$sample.fastp.json \
+        --in1 $R1 --in2 $R2 \
+        --out1 $OUTDIR/$sample.R1.trimmed.fastq.gz --out2 $OUTDIR/$sample.R2.trimmed.fastq.gz \
+        --unpaired1 $OUTDIR/$sample.unpaired.trimmed.fastq.gz --unpaired2 $OUTDIR/$sample.unpaired.trimmed.fastq.gz \
+        --reads_to_process 10000
+````
+- `- D` option to de-duplicate PCR duplicate reads
 
 
+## Map reads to reference
 
-# Extract files
-fastq-dump --split-3 
+# make reference index file
+bwa mem
