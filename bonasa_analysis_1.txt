@@ -35,6 +35,5 @@ i in /home/las80898/bonasa/reads
 
 
 
-
 # Extract files
 fastq-dump --split-3 
