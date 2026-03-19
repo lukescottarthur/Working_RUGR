@@ -32,4 +32,4 @@ cd $OUTDIR
 cp /home/las80898/bonasa/Bumbellus.assembly.fa $OUTDIR
 
 # Run busco
-busco -i Bumbellus.assembly.fa -o busco_test_1 -f --cpu 8 --mode genome -l galloanserae_odb12 --augustus --augustus_species chicken
+busco -i Bumbellus.assembly.fa -o busco_test_1 -f --cpu 16 --mode genome -l galloanserae_odb12 --augustus --augustus_species chicken
