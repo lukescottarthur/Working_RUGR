@@ -10,7 +10,7 @@
 #SBATCH --mail-user=las80898@uga.edu                # Where to send mail
 #SBATCH --mail-type=BEGIN,END,FAIL                        # Mail events 
 
-# Load conda environment (SRA toolkit, BWA, samtools, bcftools)
+# Load conda environment
 CONDA_BASE=$(conda info --base)
 source ${CONDA_BASE}/etc/profile.d/conda.sh
 conda activate bonasa_env
