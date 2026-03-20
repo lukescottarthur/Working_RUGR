@@ -13,3 +13,7 @@
 2026-03-19 23:32:42 INFO:	[makeblastdb]	1 of 1 task(s) completed
 2026-03-19 23:32:42 INFO:	Running a BLAST search for BUSCOs against created database
 2026-03-19 23:32:42 INFO:	Running 1 job(s) on tblastn, starting at 03/19/2026 23:32:42
+2026-03-20 11:42:38 INFO:	[tblastn]	1 of 1 task(s) completed
+2026-03-20 11:42:53 INFO:	Running Augustus gene predictor on BLAST search results.
+2026-03-20 11:42:53 INFO:	Running Augustus prediction using chicken as species:
+2026-03-20 11:42:53 INFO:	Running 9375 job(s) on augustus, starting at 03/20/2026 11:42:53
