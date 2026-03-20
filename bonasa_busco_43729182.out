@@ -17,3 +17,4 @@
 2026-03-20 11:42:53 INFO:	Running Augustus gene predictor on BLAST search results.
 2026-03-20 11:42:53 INFO:	Running Augustus prediction using chicken as species:
 2026-03-20 11:42:53 INFO:	Running 9375 job(s) on augustus, starting at 03/20/2026 11:42:53
+2026-03-20 13:14:50 INFO:	[augustus]	938 of 9375 task(s) completed
