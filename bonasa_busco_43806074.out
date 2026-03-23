@@ -1,0 +1,7 @@
+2026-03-22 21:38:52 INFO:	***** Start a BUSCO v6.0.0 analysis, current time: 03/22/2026 21:38:52 *****
+2026-03-22 21:38:52 INFO:	Configuring BUSCO with local environment
+2026-03-22 21:38:52 INFO:	Running genome mode
+2026-03-22 21:38:56 INFO:	Downloading information on latest versions of BUSCO data...
+2026-03-22 21:38:59 INFO:	Input file is /scratch/las80898/bonasa_busco_2/Bumbellus.assembly.fa
+2026-03-22 21:38:59 INFO:	Downloading file 'https://busco-data.ezlab.org/v5/data/lineages/galloanserae_odb12.2025-07-01.tar.gz'
+2026-03-22 21:39:08 INFO:	Decompressing file '/scratch/las80898/bonasa_busco_2/busco_downloads/lineages/galloanserae_odb12.tar.gz'
