@@ -5,3 +5,110 @@
 2026-03-22 21:38:59 INFO:	Input file is /scratch/las80898/bonasa_busco_2/Bumbellus.assembly.fa
 2026-03-22 21:38:59 INFO:	Downloading file 'https://busco-data.ezlab.org/v5/data/lineages/galloanserae_odb12.2025-07-01.tar.gz'
 2026-03-22 21:39:08 INFO:	Decompressing file '/scratch/las80898/bonasa_busco_2/busco_downloads/lineages/galloanserae_odb12.tar.gz'
+2026-03-22 21:40:45 INFO:	Running BUSCO using lineage dataset galloanserae_odb12 (eukaryota, 2025-07-01)
+2026-03-22 21:40:45 INFO:	Running 1 job(s) on bbtools, starting at 03/22/2026 21:40:45
+2026-03-22 21:40:51 INFO:	[bbtools]	1 of 1 task(s) completed
+2026-03-22 21:40:52 INFO:	Running 1 job(s) on makeblastdb, starting at 03/22/2026 21:40:52
+2026-03-22 21:40:52 INFO:	Creating BLAST database with input file
+2026-03-22 21:41:05 INFO:	[makeblastdb]	1 of 1 task(s) completed
+2026-03-22 21:41:05 INFO:	Running a BLAST search for BUSCOs against created database
+2026-03-22 21:41:05 INFO:	Running 1 job(s) on tblastn, starting at 03/22/2026 21:41:05
+2026-03-23 05:27:21 INFO:	[tblastn]	1 of 1 task(s) completed
+2026-03-23 05:27:32 INFO:	Running Augustus gene predictor on BLAST search results.
+2026-03-23 05:27:32 INFO:	Running Augustus prediction using chicken as species:
+2026-03-23 05:27:32 INFO:	Running 9375 job(s) on augustus, starting at 03/23/2026 05:27:32
+2026-03-23 06:09:03 INFO:	[augustus]	938 of 9375 task(s) completed
+2026-03-23 06:29:39 INFO:	[augustus]	1875 of 9375 task(s) completed
+2026-03-23 06:43:58 INFO:	[augustus]	2813 of 9375 task(s) completed
+2026-03-23 06:54:55 INFO:	[augustus]	3750 of 9375 task(s) completed
+2026-03-23 07:03:55 INFO:	[augustus]	4688 of 9375 task(s) completed
+2026-03-23 07:11:17 INFO:	[augustus]	5625 of 9375 task(s) completed
+2026-03-23 07:17:54 INFO:	[augustus]	6563 of 9375 task(s) completed
+2026-03-23 07:23:54 INFO:	[augustus]	7500 of 9375 task(s) completed
+2026-03-23 07:29:42 INFO:	[augustus]	8438 of 9375 task(s) completed
+2026-03-23 07:34:47 INFO:	[augustus]	9375 of 9375 task(s) completed
+2026-03-23 07:34:47 INFO:	Extracting predicted proteins...
+2026-03-23 07:36:07 INFO:	***** Run HMMER on gene sequences *****
+2026-03-23 07:36:28 INFO:	Running 9366 job(s) on hmmsearch, starting at 03/23/2026 07:36:28
+2026-03-23 07:36:58 INFO:	[hmmsearch]	937 of 9366 task(s) completed
+2026-03-23 07:37:04 INFO:	[hmmsearch]	1874 of 9366 task(s) completed
+2026-03-23 07:37:10 INFO:	[hmmsearch]	2810 of 9366 task(s) completed
+2026-03-23 07:37:16 INFO:	[hmmsearch]	3747 of 9366 task(s) completed
+2026-03-23 07:37:22 INFO:	[hmmsearch]	4684 of 9366 task(s) completed
+2026-03-23 07:37:27 INFO:	[hmmsearch]	5620 of 9366 task(s) completed
+2026-03-23 07:37:33 INFO:	[hmmsearch]	6557 of 9366 task(s) completed
+2026-03-23 07:37:39 INFO:	[hmmsearch]	7493 of 9366 task(s) completed
+2026-03-23 07:37:45 INFO:	[hmmsearch]	8430 of 9366 task(s) completed
+2026-03-23 07:37:54 INFO:	[hmmsearch]	9366 of 9366 task(s) completed
+2026-03-23 07:38:14 INFO:	0 exons in total
+2026-03-23 07:38:14 INFO:	Starting second step of analysis. The gene predictor Augustus is retrained using the results from the initial run to yield more accurate results.
+2026-03-23 07:39:00 INFO:	Extracting missing and fragmented buscos from the file ancestral_variants...
+2026-03-23 07:39:02 INFO:	Running a BLAST search for BUSCOs against created database
+2026-03-23 07:39:02 INFO:	Running 1 job(s) on tblastn, starting at 03/23/2026 07:39:02
+2026-03-23 10:55:15 INFO:	[tblastn]	1 of 1 task(s) completed
+2026-03-23 10:55:26 INFO:	Converting predicted genes to short genbank files
+2026-03-23 10:55:26 INFO:	Running 6079 job(s) on gff2gbSmallDNA.pl, starting at 03/23/2026 10:55:26
+2026-03-23 10:56:49 INFO:	[gff2gbSmallDNA.pl]	608 of 6079 task(s) completed
+2026-03-23 10:58:05 INFO:	[gff2gbSmallDNA.pl]	1216 of 6079 task(s) completed
+2026-03-23 10:59:22 INFO:	[gff2gbSmallDNA.pl]	1824 of 6079 task(s) completed
+2026-03-23 11:00:39 INFO:	[gff2gbSmallDNA.pl]	2432 of 6079 task(s) completed
+2026-03-23 11:01:55 INFO:	[gff2gbSmallDNA.pl]	3040 of 6079 task(s) completed
+2026-03-23 11:03:12 INFO:	[gff2gbSmallDNA.pl]	3648 of 6079 task(s) completed
+2026-03-23 11:04:28 INFO:	[gff2gbSmallDNA.pl]	4256 of 6079 task(s) completed
+2026-03-23 11:05:45 INFO:	[gff2gbSmallDNA.pl]	4864 of 6079 task(s) completed
+2026-03-23 11:07:03 INFO:	[gff2gbSmallDNA.pl]	5472 of 6079 task(s) completed
+2026-03-23 11:08:55 INFO:	[gff2gbSmallDNA.pl]	6079 of 6079 task(s) completed
+2026-03-23 11:08:55 INFO:	All files converted to short genbank files, now training Augustus using Single-Copy Complete BUSCOs
+2026-03-23 11:08:55 INFO:	Running 1 job(s) on new_species.pl, starting at 03/23/2026 11:08:55
+2026-03-23 11:08:57 INFO:	[new_species.pl]	1 of 1 task(s) completed
+2026-03-23 11:09:04 INFO:	Running 1 job(s) on etraining, starting at 03/23/2026 11:09:04
+2026-03-23 11:09:12 INFO:	[etraining]	1 of 1 task(s) completed
+2026-03-23 11:09:12 INFO:	Re-running Augustus with the new metaparameters, number of target BUSCOs: 747
+2026-03-23 11:09:12 INFO:	Running Augustus gene predictor on BLAST search results.
+2026-03-23 11:09:12 INFO:	Running Augustus prediction using BUSCO_busco_test_augustus as species:
+2026-03-23 11:09:12 INFO:	Running 973 job(s) on augustus, starting at 03/23/2026 11:09:12
+2026-03-23 11:12:08 INFO:	[augustus]	98 of 973 task(s) completed
+2026-03-23 11:14:32 INFO:	[augustus]	195 of 973 task(s) completed
+2026-03-23 11:16:31 INFO:	[augustus]	292 of 973 task(s) completed
+2026-03-23 11:18:04 INFO:	[augustus]	390 of 973 task(s) completed
+2026-03-23 11:19:23 INFO:	[augustus]	487 of 973 task(s) completed
+2026-03-23 11:20:42 INFO:	[augustus]	584 of 973 task(s) completed
+2026-03-23 11:21:49 INFO:	[augustus]	682 of 973 task(s) completed
+2026-03-23 11:22:50 INFO:	[augustus]	779 of 973 task(s) completed
+2026-03-23 11:23:49 INFO:	[augustus]	876 of 973 task(s) completed
+2026-03-23 11:35:28 INFO:	[augustus]	973 of 973 task(s) completed
+2026-03-23 11:35:28 INFO:	Extracting predicted proteins...
+2026-03-23 11:35:37 INFO:	***** Run HMMER on gene sequences *****
+2026-03-23 11:35:40 INFO:	Running 973 job(s) on hmmsearch, starting at 03/23/2026 11:35:40
+2026-03-23 11:35:52 INFO:	[hmmsearch]	98 of 973 task(s) completed
+2026-03-23 11:36:00 INFO:	[hmmsearch]	195 of 973 task(s) completed
+2026-03-23 11:36:09 INFO:	[hmmsearch]	292 of 973 task(s) completed
+2026-03-23 11:36:17 INFO:	[hmmsearch]	390 of 973 task(s) completed
+2026-03-23 11:36:25 INFO:	[hmmsearch]	487 of 973 task(s) completed
+2026-03-23 11:36:33 INFO:	[hmmsearch]	584 of 973 task(s) completed
+2026-03-23 11:36:42 INFO:	[hmmsearch]	682 of 973 task(s) completed
+2026-03-23 11:36:50 INFO:	[hmmsearch]	779 of 973 task(s) completed
+2026-03-23 11:36:58 INFO:	[hmmsearch]	876 of 973 task(s) completed
+2026-03-23 11:37:07 INFO:	[hmmsearch]	973 of 973 task(s) completed
+2026-03-23 11:37:09 INFO:	0 exons in total
+2026-03-23 11:37:09 INFO:	Results:	C:91.9%[S:91.6%,D:0.2%],F:2.7%,M:5.5%,n:6841	   
+
+2026-03-23 11:39:08 INFO:	
+
+    ---------------------------------------------------
+    |Results from dataset galloanserae_odb12           |
+    ---------------------------------------------------
+    |C:91.9%[S:91.6%,D:0.2%],F:2.7%,M:5.5%,n:6841      |
+    |6284    Complete BUSCOs (C)                       |
+    |6269    Complete and single-copy BUSCOs (S)       |
+    |15    Complete and duplicated BUSCOs (D)          |
+    |182    Fragmented BUSCOs (F)                      |
+    |375    Missing BUSCOs (M)                         |
+    |6841    Total BUSCO groups searched               |
+    ---------------------------------------------------
+2026-03-23 11:39:08 INFO:	BUSCO analysis done. Total running time: 50409 seconds
+2026-03-23 11:39:08 INFO:	Results written in /scratch/las80898/bonasa_busco_2/busco_test_augustus
+2026-03-23 11:39:08 INFO:	For assistance with interpreting the results, please consult the userguide: https://busco.ezlab.org/busco_userguide.html
+
+2026-03-23 11:39:08 INFO:	Visit this page https://gitlab.com/ezlab/busco#how-to-cite-busco to see how to cite BUSCO
+2026-03-23 11:39:09 INFO:	Thank you for using BUSCO! Anonymous usage data is gathered to improve the tool. You may opt out with --opt-out-run-stats.
