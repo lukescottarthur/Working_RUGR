@@ -2,9 +2,9 @@
 #SBATCH --job-name=bonasa_busco                      # Job name 
 #SBATCH --partition=batch                           # Partition name 
 #SBATCH --ntasks=1                                  # 1 task (process)
-#SBATCH --cpus-per-task=16                           # CPU core count per task
-#SBATCH --mem=32G                                    # Memory per node
-#SBATCH --time=24:00:00                              # Time limit hrs:mins:secs
+#SBATCH --cpus-per-task=32                           # CPU core count per task
+#SBATCH --mem=120G                                    # Memory per node
+#SBATCH --time=36:00:00                              # Time limit hrs:mins:secs
 #SBATCH --output=/home/las80898/GENE8940_parallel_2/%x_%j.out  
 #SBATCH --error=/home/las80898/GENE8940_parallel_2/%x_%j.error 
 #SBATCH --mail-user=las80898@uga.edu                # Where to send mail
@@ -32,4 +32,4 @@ cd $OUTDIR
 cp /home/las80898/bonasa/Bumbellus.assembly.fa $OUTDIR
 
 # Run busco
-busco -i Bumbellus.assembly.fa -o busco_test_1 -f --cpu 16 --mode genome -l galloanserae_odb12 --augustus --augustus_species chicken
+busco -i Bumbellus.assembly.fa -o busco_test_augustus -f --cpu 32 --mode genome -l galloanserae_odb12 --augustus --augustus_species chicken

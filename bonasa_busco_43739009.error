@@ -1,0 +1,11 @@
+2026-03-20 19:31:39 ERROR:	The following job failed with the error code -9:
+augustus --codingseq=1 --proteinprofile=/scratch/las80898/bonasa_busco_2/busco_downloads/lineages/galloanserae_odb12/prfl/2332at1549675.prfl --predictionStart=18185804 --predictionEnd=18315759 --species=chicken /scratch/las80898/bonasa_busco_2/busco_test_1/run_galloanserae_odb12/blast_output/sequences/Scaffold_8.temp
+2026-03-20 19:31:39 ERROR:	Error message: 
+2026-03-20 19:45:14 ERROR:	The following job failed with the error code -9:
+augustus --codingseq=1 --proteinprofile=/scratch/las80898/bonasa_busco_2/busco_downloads/lineages/galloanserae_odb12/prfl/11794at1549675.prfl --predictionStart=14202948 --predictionEnd=14378093 --species=chicken /scratch/las80898/bonasa_busco_2/busco_test_1/run_galloanserae_odb12/blast_output/sequences/Scaffold_1.temp
+2026-03-20 19:45:14 ERROR:	Error message: 
+2026-03-20 21:50:45 ERROR:	Job failed with error code -9
+2026-03-20 21:50:45 ERROR:	BUSCO analysis failed!
+2026-03-20 21:50:45 ERROR:	Check the logs, read the user guide (https://busco.ezlab.org/busco_userguide.html), and check the BUSCO issue board on https://gitlab.com/ezlab/busco/issues
+
+slurmstepd: error: Detected 2 oom_kill events in StepId=43739009.batch. Some of the step tasks have been OOM Killed.

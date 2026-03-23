@@ -1,0 +1,29 @@
+2026-03-20 13:37:52 INFO:	***** Start a BUSCO v6.0.0 analysis, current time: 03/20/2026 13:37:52 *****
+2026-03-20 13:37:52 INFO:	Configuring BUSCO with local environment
+2026-03-20 13:37:52 INFO:	Running genome mode
+2026-03-20 13:37:52 INFO:	'Force' option selected; overwriting previous results directory
+2026-03-20 13:37:54 INFO:	Downloading information on latest versions of BUSCO data...
+2026-03-20 13:38:04 INFO:	Input file is /scratch/las80898/bonasa_busco_2/Bumbellus.assembly.fa
+2026-03-20 13:38:04 INFO:	The local file or folder /scratch/las80898/bonasa_busco_2/busco_downloads/lineages/galloanserae_odb12 is the last available version.
+2026-03-20 13:38:20 INFO:	Running BUSCO using lineage dataset galloanserae_odb12 (eukaryota, 2025-07-01)
+2026-03-20 13:38:20 INFO:	Running 1 job(s) on bbtools, starting at 03/20/2026 13:38:20
+2026-03-20 13:38:25 INFO:	[bbtools]	1 of 1 task(s) completed
+2026-03-20 13:38:25 INFO:	Running 1 job(s) on makeblastdb, starting at 03/20/2026 13:38:25
+2026-03-20 13:38:26 INFO:	Creating BLAST database with input file
+2026-03-20 13:38:34 INFO:	[makeblastdb]	1 of 1 task(s) completed
+2026-03-20 13:38:34 INFO:	Running a BLAST search for BUSCOs against created database
+2026-03-20 13:38:34 INFO:	Running 1 job(s) on tblastn, starting at 03/20/2026 13:38:34
+2026-03-20 19:22:40 INFO:	[tblastn]	1 of 1 task(s) completed
+2026-03-20 19:22:49 INFO:	Running Augustus gene predictor on BLAST search results.
+2026-03-20 19:22:49 INFO:	Running Augustus prediction using chicken as species:
+2026-03-20 19:22:49 INFO:	Running 9375 job(s) on augustus, starting at 03/20/2026 19:22:49
+2026-03-20 20:14:07 INFO:	[augustus]	938 of 9375 task(s) completed
+2026-03-20 20:38:31 INFO:	[augustus]	1875 of 9375 task(s) completed
+2026-03-20 20:54:56 INFO:	[augustus]	2813 of 9375 task(s) completed
+2026-03-20 21:07:21 INFO:	[augustus]	3750 of 9375 task(s) completed
+2026-03-20 21:17:30 INFO:	[augustus]	4688 of 9375 task(s) completed
+2026-03-20 21:25:40 INFO:	[augustus]	5625 of 9375 task(s) completed
+2026-03-20 21:32:51 INFO:	[augustus]	6563 of 9375 task(s) completed
+2026-03-20 21:39:24 INFO:	[augustus]	7500 of 9375 task(s) completed
+2026-03-20 21:45:41 INFO:	[augustus]	8438 of 9375 task(s) completed
+2026-03-20 21:50:45 INFO:	Thank you for using BUSCO! Anonymous usage data is gathered to improve the tool. You may opt out with --opt-out-run-stats.
