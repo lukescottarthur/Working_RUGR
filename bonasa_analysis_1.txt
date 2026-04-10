@@ -51,12 +51,12 @@ done
 ## trimming and filtering with fastp
 sbatch bonasa_fastp.sh
 
-# move trimmed reads to new folder?
 
 ### Map reads to reference
 
-# make reference index file
-bwa index *.trimmed.fastq
+# make reference index
+bwa index Bumbellus.assembly.fa
+
 
 # 
 bwa mem
