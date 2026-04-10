@@ -48,14 +48,15 @@ do
 fastq-dump --split-3 SRR*
 done
 
-##QC report with fastqc
-#?? couldn't get fastqc to download
-
-
-## trimming with fastp
+## trimming and filtering with fastp
 sbatch bonasa_fastp.sh
 
-## Map reads to reference
+# move trimmed reads to new folder?
+
+### Map reads to reference
 
 # make reference index file
+bwa index *.trimmed.fastq
+
+# 
 bwa mem
