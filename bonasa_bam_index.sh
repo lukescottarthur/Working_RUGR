@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=bonasa_samtools_sorting                      # Job name 
+#SBATCH --job-name=bonasa_bam_index                      # Job name 
 #SBATCH --partition=batch                           # Partition name 
 #SBATCH --ntasks=1                                  # 1 task (process)
 #SBATCH --cpus-per-task=6                           # CPU core count per task
@@ -15,24 +15,10 @@ CONDA_BASE=$(conda info --base)
 source ${CONDA_BASE}/etc/profile.d/conda.sh
 conda activate bonasa_env
 
-# set outdirectory variable
-OUTDIR="/home/las80898/bonasa/sorted_bam_files"
 
-# If output directory doesn't exist, create it
-if [ ! -d $OUTDIR ]
-then
-    mkdir -p $OUTDIR
-fi
-
-cd /home/las80898/bonasa/mapped_reads
-
-# sort and convert to BAM
-for file in *.sam; do
-    base="${file%.sam}"
-    samtools sort -O BAM --threads 6 $file > ${OUTDIR}/${base}_sorted.bam
-done
+cd /home/las80898/bonasa/sorted_bam_files
 
 # index bam files
-#for file in /home/las80898/bonasa/reads/; do
-#    samtools index --threads 6 *_sorted.bam
-#    done
+for file in *_sorted.bam; do
+    samtools index --threads 6 $file
+    done
