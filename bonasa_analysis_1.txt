@@ -58,5 +58,11 @@ sbatch bonasa_fastp.sh
 bwa index Bumbellus.assembly.fa
 
 
-# 
-bwa mem
+# map reads
+sbatch bonasa_read_mapping.sh
+
+# sort reads and convert to bam
+sbatch bonasa_samtools_sorting.sh
+
+# index sorted reads
+sbatch bonasa_bam_index.sh

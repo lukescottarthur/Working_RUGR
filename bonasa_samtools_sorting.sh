@@ -31,8 +31,3 @@ for file in *.sam; do
     base="${file%.sam}"
     samtools sort -O BAM --threads 6 $file > ${OUTDIR}/${base}_sorted.bam
 done
-
-# index bam files
-#for file in /home/las80898/bonasa/reads/; do
-#    samtools index --threads 6 *_sorted.bam
-#    done
