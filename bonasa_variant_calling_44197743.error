@@ -1,0 +1,5 @@
+Note: none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
+[mpileup] 1 samples in 1 input files
+[mpileup] maximum number of reads per input file set to -d 250
+[W::bcf_hdr_check_sanity] MQ should be declared as Type=Float
+slurmstepd: error: *** JOB 44197743 ON c4-14 CANCELLED AT 2026-04-13T10:03:03 ***
