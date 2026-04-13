@@ -15,6 +15,9 @@ CONDA_BASE=$(conda info --base)
 source ${CONDA_BASE}/etc/profile.d/conda.sh
 conda activate bonasa_env
 
+cd /home/las80898/bonasa/vcf_reads
 
-# Generate index file
-bcftools index SRR8082143_Final.vcf.gz
+# Generate index files
+for file in *.vcf.gz; do
+bcftools index "${file}"
+done
