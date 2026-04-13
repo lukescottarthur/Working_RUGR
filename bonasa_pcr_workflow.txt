@@ -2,3 +2,5 @@
 
 # this is a preliminary analysis with only forward reads
 
+conda activate bonasa_env 
+docker install saditya88/asap:arm
