@@ -1,0 +1,4 @@
+# this is a workflow for preparing pcr sanger sequence data for downstream analysis
+
+# this is a preliminary analysis with only forward reads
+

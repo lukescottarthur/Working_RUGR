@@ -3,8 +3,8 @@
 #SBATCH --partition=batch                           # Partition name 
 #SBATCH --ntasks=1                                  # 1 task (process)
 #SBATCH --cpus-per-task=8                           # CPU core count per task
-#SBATCH --mem=128G                                    # Memory per node
-#SBATCH --time=36:00:00                              # Time limit hrs:mins:secs
+#SBATCH --mem=256G                                    # Memory per node
+#SBATCH --time=72:00:00                              # Time limit hrs:mins:secs
 #SBATCH --output=/home/las80898/GENE8940_parallel_2/%x_%j.out  
 #SBATCH --error=/home/las80898/GENE8940_parallel_2/%x_%j.error 
 #SBATCH --mail-user=las80898@uga.edu                # Where to send mail
@@ -33,7 +33,7 @@ for bam in *.bam; do
     > "$tmp"
 
   bcftools reheader \
-    -h <(bcftools view -h "$tmp" | sed 's/Type=Integer/Type=Float/g') \
+    -h <(bcftools view -h "$tmp" | sed 's/MQ,Number=1,Type=Integer/MQ,Number=1,Type=Float/g') \
     "$tmp" \
     | bcftools call --threads 8 -mv -Ou - \
     | bcftools filter -Oz -e 'QUAL<40 || DP<10' \
