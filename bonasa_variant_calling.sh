@@ -29,14 +29,6 @@ for bam in *.bam; do
   sample="${bam%.bam}"
   bcftools mpileup -Ou --threads 8 --min-MQ 60 -f /home/las80898/bonasa/Bumbellus.assembly.fa "$bam" \
     | bcftools call --threads 8 -mv -Ou - \
-    | bcftools filter -Oz -e 'QUAL<40 || DP<10' \
-    > "${OUTDIR}/${sample}.vcf.gz"
-done
-
-for bam in *.bam; do
-  sample="${bam%.bam}"
-  bcftools mpileup -Ou --threads 8 --min-MQ 60 -f /home/las80898/bonasa/Bumbellus.assembly.fa "$bam" \
-    | bcftools call --threads 8 -mv -Ou - \
     | bcftools filter -e 'QUAL<40 || DP<10' -Ou \
     | bcftools reheader -h <(bcftools view -h /dev/stdin | sed 's/MQ,Number=1,Type=Integer/MQ,Number=1,Type=Float/g') \
     -o "${OUTDIR}/${sample}.vcf.gz"

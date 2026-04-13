@@ -1,0 +1,12 @@
+Note: none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
+[mpileup] 1 samples in 1 input files
+[mpileup] maximum number of reads per input file set to -d 250
+[W::bcf_hdr_check_sanity] MQ should be declared as Type=Float
+[E::hts_hopen] Failed to open file /dev/stdin
+[E::hts_open_format] Failed to open file "/dev/stdin" : Exec format error
+Failed to read from /dev/stdin: Exec format error
+[W::bcf_hdr_check_sanity] MQ should be declared as Type=Float
+[W::bcf_hdr_parse] The first line should be ##fileformat; is the VCF/BCF header broken?
+[W::bcf_hdr_parse] Could not parse header line: ""
+[E::bcf_hdr_parse] Could not parse the header, sample line not found
+An error occurred while parsing the header
