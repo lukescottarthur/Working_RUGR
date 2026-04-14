@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=bonasa_fastp                      # Job name 
+#SBATCH --job-name=pcr_fastp                      # Job name 
 #SBATCH --partition=batch                           # Partition name 
 #SBATCH --ntasks=1                                  # 1 task (process)
 #SBATCH --cpus-per-task=6                           # CPU core count per task
@@ -24,9 +24,9 @@ then
 fi
 
 # Change directory
-/home/las80898/bonasa/pcr_reads/cytb_1_fastq
+cd /home/las80898/bonasa/pcr_reads/cytb_1_fastq
 
 for file in *.fastq; do
     sample="${file%.fastq}"
-    fastp --thread 6 -i ${file} -o "${OUTDIR}/${sample}_trimmed.fastq"
+    fastp --thread 6 -n ...... -i ${file} -o "${OUTDIR}/${sample}_trimmed.fastq"
 done   

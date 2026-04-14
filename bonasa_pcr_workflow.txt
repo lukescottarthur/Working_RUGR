@@ -1,13 +1,15 @@
 # this is a workflow for preparing pcr sanger sequence data for downstream analysis
 
-# this is a preliminary analysis with only forward reads
+# Note: this is a preliminary analysis with only forward reads
+
+# add ab1 files to a directory
 
 conda activate bonasa_env 
 
 # convert ab1 files to fastq
 sbatch pcr_ab1_to_fastq.sbatch
 
-## trimming and filtering with fastp
+# trimming and filtering with fastp
 sbatch pcr_fastp.sh
 
 # get reference chromosome (extract mt from reference)
