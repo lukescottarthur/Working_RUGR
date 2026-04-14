@@ -5,13 +5,13 @@
 conda activate bonasa_env 
 
 # convert ab1 files to fastq
+sbatch pcr_ab1_to_fastq.sbatch
 
+## trimming and filtering with fastp
+sbatch pcr_fastp.sh
 
-# trim stretches of N from files
+# get reference chromosome (extract mt from reference)
+### Map reads to reference
 
-
-# align? 
-
-# trim to same size
 
 # ignore N values and calculate genetic distance matrix
