@@ -66,3 +66,15 @@ sbatch bonasa_samtools_sorting.sh
 
 # index sorted reads
 sbatch bonasa_bam_index.sh
+
+# compute genotype likelihoods, outputting bcf.gz files
+sbatch bonasa_variant_calling.sh
+
+# reheader to fix MQ type
+sbatch bonasa_vcf_reheader.sh
+
+# call and filter variants
+sbatch bonasa_variant_calling_part2.sh
+
+# index vcf.gz files
+sbatch bonasa_vcf_indexing.sh

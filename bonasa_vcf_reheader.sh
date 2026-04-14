@@ -15,19 +15,20 @@ CONDA_BASE=$(conda info --base)
 source ${CONDA_BASE}/etc/profile.d/conda.sh
 conda activate bonasa_env
 
-OUTDIR="/scratch/las80898/bonasa/temp_bcf_reads"
+OUTDIR="/scratch/las80898/bonasa/reheader_temp_bcf_reads"
 
 # If output directory doesn't exist, create it
 if [ ! -d "$OUTDIR" ]; then
     mkdir -p "$OUTDIR"
 fi
 
-cd /home/las80898/bonasa/sorted_bam_files
+cd /scratch/las80898/bonasa/temp_bcf_reads
 
-# Compute genotype likelihoods with MQ > 60
-for bam in *.bam; do
-  sample="${bam%.bam}"
+# change to MQ=Float
+for bcf in *.bcf.gz; do
+  sample="${bcf%.bcf.gz}"
 
-  bcftools mpileup -Ou --threads 8 --min-MQ 60 -f /home/las80898/bonasa/Bumbellus.assembly.fa "$bam" > "${OUTDIR}/${sample}.bcf.gz"
-  done
+  bcftools reheader \
+    -h <(bcftools view -h "$bcf" | sed 's/MQ,Number=1,Type=Integer/MQ,Number=1,Type=Float/g') > "${OUTDIR}/${sample}.bcf.gz"
+done
 

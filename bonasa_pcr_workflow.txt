@@ -3,4 +3,15 @@
 # this is a preliminary analysis with only forward reads
 
 conda activate bonasa_env 
-docker install saditya88/asap:arm
+
+# convert ab1 files to fastq
+
+
+# trim stretches of N from files
+
+
+# align? 
+
+# trim to same size
+
+# ignore N values and calculate genetic distance matrix

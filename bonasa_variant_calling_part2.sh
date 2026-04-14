@@ -15,19 +15,18 @@ CONDA_BASE=$(conda info --base)
 source ${CONDA_BASE}/etc/profile.d/conda.sh
 conda activate bonasa_env
 
-OUTDIR="/scratch/las80898/bonasa/temp_bcf_reads"
+OUTDIR="/home/las80898/bonasa/vcf_reads"
 
 # If output directory doesn't exist, create it
 if [ ! -d "$OUTDIR" ]; then
     mkdir -p "$OUTDIR"
 fi
 
-cd /home/las80898/bonasa/sorted_bam_files
+cd /scratch/las80898/bonasa/reheader_temp_bcf_reads
 
-# Compute genotype likelihoods with MQ > 60
-for bam in *.bam; do
-  sample="${bam%.bam}"
 
-  bcftools mpileup -Ou --threads 8 --min-MQ 60 -f /home/las80898/bonasa/Bumbellus.assembly.fa "$bam" > "${OUTDIR}/${sample}.bcf.gz"
-  done
-
+# variant call and filter (quality score > 40; mapped reads > 10)
+for bcf in *.bcf.gz; do
+  sample="${bcf%.bcf.gz}"
+bcftools call --threads 8 -mv -Ou - | bcftools filter -Oz -e 'QUAL<40 || DP<10' > "${OUTDIR}/${sample}.vcf.gz"
+done
