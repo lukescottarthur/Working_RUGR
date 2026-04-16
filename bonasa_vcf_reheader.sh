@@ -16,18 +16,15 @@ CONDA_BASE=$(conda info --base)
 source ${CONDA_BASE}/etc/profile.d/conda.sh
 conda activate bonasa_env
 
-INDIR="/scratch/las80898/bonasa/temp_bcf_reads_3"
-OUTDIR="/scratch/las80898/bonasa/reheader_temp_bcf_reads"
+INDIR="/home/las80898/bonasa/vcf_reads"
+OUTDIR="/home/las80898/bonasa/vcf_reads_2"
 mkdir -p "$OUTDIR"
 
-mapfile -t BCF_FILES < <(ls "${INDIR}"/*.bcf.gz | sort)
-
-BCF="${BCF_FILES[$SLURM_ARRAY_TASK_ID]}"
-SAMPLE=$(basename "${BCF%_sorted.bcf.gz}")
-
-echo "Processing sample: $SAMPLE (task index: $SLURM_ARRAY_TASK_ID)"
+mapfile -t VCF_FILES < <(ls "${INDIR}"/*.vcf.gz | sort)
+VCF="${VCF_FILES[$SLURM_ARRAY_TASK_ID]}"
+SAMPLE=$(basename "${VCF%.vcf.gz}")
 
 bcftools reheader \
-  -h <(bcftools view -h "$BCF" | sed 's/MQ,Number=1,Type=Integer/MQ,Number=1,Type=Float/g') \
-  "$BCF" \
-  -o "${OUTDIR}/${SAMPLE}.bcf.gz"
+  -h <(bcftools view -h "$VCF" | sed 's/MQ,Number=1,Type=Integer/MQ,Number=1,Type=Float/g') \
+  "$VCF" \
+  -o "${OUTDIR}/${SAMPLE}.vcf.gz"
