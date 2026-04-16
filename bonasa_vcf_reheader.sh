@@ -20,18 +20,14 @@ INDIR="/scratch/las80898/bonasa/temp_bcf_reads_3"
 OUTDIR="/scratch/las80898/bonasa/reheader_temp_bcf_reads"
 mkdir -p "$OUTDIR"
 
-# Build an array of all files, then select one by SLURM task index
-mapfile -t bcf_FILES < <(ls "${INDIR}"/*.bcf.gz | sort)
+mapfile -t BCF_FILES < <(ls "${INDIR}"/*.bcf.gz | sort)
 
-bcf="${bcf_FILES[$SLURM_ARRAY_TASK_ID]}"
-SAMPLE=$(basename "${bcf%_sorted.bcf.gz}")
+BCF="${BCF_FILES[$SLURM_ARRAY_TASK_ID]}"
+SAMPLE=$(basename "${BCF%_sorted.bcf.gz}")
 
 echo "Processing sample: $SAMPLE (task index: $SLURM_ARRAY_TASK_ID)"
 
-# change to MQ=Float
-
 bcftools reheader \
-  -h <(bcftools view -h "$bcf" | sed 's/MQ,Number=1,Type=Integer/MQ,Number=1,Type=Float/g') \
-  "$bcf" \
-  -o "${OUTDIR}/${sample}.bcf.gz"
-done
+  -h <(bcftools view -h "$BCF" | sed 's/MQ,Number=1,Type=Integer/MQ,Number=1,Type=Float/g') \
+  "$BCF" \
+  -o "${OUTDIR}/${SAMPLE}.bcf.gz"
