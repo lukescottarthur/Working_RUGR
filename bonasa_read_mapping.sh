@@ -35,7 +35,3 @@ for R1 in *_1.fastq_trimmed.fastq; do
     R2="${base}_2.fastq_trimmed.fastq"
     bwa mem -t 8 /home/las80898/bonasa/Bumbellus.assembly.fa $R1 $R2 > ${OUTDIR}/${base}.sam
 done   
-
-# -R "$rg"
-# # Define read group string
-   # rg="@RG\\tID:${base}\\tSM:${base}\\tPL:Illumina\\tLB:1\\tPU:1"
