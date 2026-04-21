@@ -23,8 +23,6 @@ CH_2000_untrimmed <- rast("canopy_height_2000.tif")
 CH_2000_untrimmed_focal <- focal(CH_2000_untrimmed, win = 3, fun = sd, na.rm = TRUE)
 # CH_2019
 CH_2019_untrimmed <- rast("canopy_height_2019.tif")
-CH_2019_untrimmed_resample <- resample(CH_2019_untrimmed, CH_2000_untrimmed, method = "bilinear")
-# compute focal window
 CH_2019_untrimmed_focal <- focal(CH_2019_untrimmed_resample, win = 3, fun = sd, na.rm = TRUE)
 # subtract rasters
 CH_difference_untrimmed <- CH_2019_untrimmed_focal - CH_2000_untrimmed_focal
@@ -66,10 +64,17 @@ HLI_untrimmed_a <- project(HLI_untrimmed, crs(CH_difference_untrimmed))
 study_area_extent_a <- project(study_area_extent, crs(CH_difference_untrimmed))
 
 # crop to study area
-HLI <- crop(HLI_untrimmed_a, study_area_extent_a)
-CH <- crop(CH_difference_untrimmed, study_area_extent_a)
-CC <- crop(CC_difference_untrimmed, study_area_extent_a)
-imp_surf <- crop(imp_surf_difference_untrimmed_a, study_area_extent_a)
+HLI_a <- crop(HLI_untrimmed_a, study_area_extent_a)
+CH_a <- crop(CH_difference_untrimmed, study_area_extent_a)
+CC_a <- crop(CC_difference_untrimmed, study_area_extent_a)
+imp_surf_a <- crop(imp_surf_difference_untrimmed_a, study_area_extent_a)
+
+# save as tifs to check interactively
+writeRaster(HLI_a, "/scratch/las80898/bonasa/temp_tifs/HLI_A.tif", overwrite=TRUE)
+writeRaster(CH_a, "/scratch/las80898/bonasa/temp_tifs/CH_a.tif", overwrite=TRUE)
+writeRaster(CC_a, "/scratch/las80898/bonasa/temp_tifs/CC_a.tif", overwrite=TRUE)
+writeRaster(imp_surf_a, "/scratch/las80898/bonasa/temp_tifs/imp_surf_a.tif", overwrite=TRUE)
+
 
 # plot(HLI)
 # plot(imp_surf)
@@ -81,20 +86,20 @@ imp_surf <- crop(imp_surf_difference_untrimmed_a, study_area_extent_a)
 #sink()
 
 # validate crop
-crs(HLI)
-crs(CH)
-crs(CC)
-crs(imp_surf)
+#crs(HLI)
+#crs(CH)
+#crs(CC)
+#crs(imp_surf)
 
-res(HLI)
-res(CH)
-res(CC)
-res(imp_surf)
+#res(HLI)
+#res(CH)
+#res(CC)
+#res(imp_surf)
 
-ext(HLI)
-ext(CH)
-ext(CC)
-ext(imp_surf)
+#ext(HLI)
+#ext(CH)
+#ext(CC)
+#ext(imp_surf)
 
 # If resolution or extent differs, resample to match a reference layer
 
@@ -102,17 +107,17 @@ ext(imp_surf)
 
 
 # make raster stack
-updated_stack <- c(HLI, CH, CC, imp_surf)
+#updated_stack <- c(HLI, CH, CC, imp_surf)
 
 # change variable names??
-names(updated_stack) <- c("HLI", "CH", "CC", "imp_surf")
+#names(updated_stack) <- c("HLI", "CH", "CC", "imp_surf")
 
 # Final check
-print(updated_stack)
-nlyr(updated_stack)   # Should equal number of layers - ...
+#print(updated_stack)
+#nlyr(updated_stack)   # Should equal number of layers - ...
 
 
 # save
-writeRaster(updated_stack, "updated_stack.tif", overwrite = TRUE)   
+#writeRaster(updated_stack, "updated_stack.tif", overwrite = TRUE)   
 
 

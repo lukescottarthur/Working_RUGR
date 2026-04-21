@@ -4,7 +4,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64gb
-#SBATCH --time=12:00:00
+#SBATCH --time=6:00:00
 #SBATCH --error=/home/las80898/GENE8940_parallel_2/rasterstackprep.%j.err
 #SBATCH --output=/home/las80898/GENE8940_parallel_2/rasterstackprep.%j.out
 #SBATCH --mail-user=las80898@uga.edu
@@ -19,7 +19,7 @@ source ${CONDA_BASE}/etc/profile.d/conda.sh
 conda activate landscape_env
 
 #set output directory variable
-OUTDIR="/scratch/las80898/bonasa/"
+OUTDIR="/scratch/las80898/bonasa/temp_tifs"
 
 #if output directory doesn't exist, create it
 if [ ! -d "$OUTDIR" ]
