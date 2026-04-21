@@ -13,8 +13,9 @@
 # conda create -n landscape_env
 # conda activate landscape_env
 # conda install conda-forge::r-base
-conda install -c conda-forge r-terra
-conda install -c conda-forge r-spatialeco
+# conda install -c conda-forge r-terra
+# conda install -c conda-forge r-spatialeco
+# conda install -c conda-forge r-codetools   ## dothis next time?
 
 # activate R environment
 CONDA_BASE=$(conda info --base)

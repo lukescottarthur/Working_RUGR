@@ -1,0 +1,43 @@
+
+R version 4.5.3 (2026-03-11) -- "Reassured Reassurer"
+Copyright (C) 2026 The R Foundation for Statistical Computing
+Platform: x86_64-conda-linux-gnu
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # Updated raster stack
+> 
+> library(spatialEco)
+> library(terra)
+> 
+> # jobs to do:
+> # 1. calculate hli from elevation
+> # 2. calculated stdev focal areas with terra::focal(input, win = x, fun = sd, na.rm = TRUE)
+> # for canopy height both years, then subtract rasters
+> # 3. and canopy cover both years, then subtract rasters
+> # 4. subtract impervious surface rasters
+> # 5. convert CRS, crop, make stack
+> 
+> setwd("/scratch/las80898/bonasa/updated_tifs")
+> 
+> ## job 1 - done
+> elevation_untrimmed <- rast("elevation.tif")
+> HLI_untrimmed <- hli(elevation_untrimmed, force.hemisphere = "northern")
+> 
+> ## job 2 - done
+> # CH_2000
+> CH_2000_untrimmed <- rast("canopy_height_2000.tif")
+> CH_2000_untrimmed_focal <- focal(CH_2000_untrimmed, win = 3, fun = sd, na.rm = TRUE)
+> # CH_2019
+> CH_2019_untrimmed <- rast("canopy_height_2019.tif")
+> CH_2019_untrimmed_focal <- focal(CH_2019_untrimmed_resample, win = 3, fun = sd, na.rm = TRUE)
