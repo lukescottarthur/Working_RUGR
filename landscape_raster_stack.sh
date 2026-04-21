@@ -10,8 +10,8 @@
 #SBATCH --mail-user=las80898@uga.edu
 #SBATCH --mail-type=BEGIN,END,FAIL
 
-#  conda create -n landscape_env
-# cond activate landscape_env
+# conda create -n landscape_env
+# conda activate landscape_env
 # conda install -y -n landscape_env -c bioconda bioconductor-biostrings=2.74.0=r44h3df3fcb_1
 # conda install -c conda-forge
 # conda install -c conda-forge r-terra
