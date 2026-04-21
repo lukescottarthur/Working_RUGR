@@ -12,10 +12,9 @@
 
 # conda create -n landscape_env
 # conda activate landscape_env
-# conda install -y -n landscape_env -c bioconda bioconductor-biostrings=2.74.0=r44h3df3fcb_1
-# conda install -c conda-forge
-# conda install -c conda-forge r-terra
-# conda install -c conda-forge r-spatialeco
+# conda install conda-forge::r-base
+conda install -c conda-forge r-terra
+conda install -c conda-forge r-spatialeco
 
 # activate R environment
 CONDA_BASE=$(conda info --base)
