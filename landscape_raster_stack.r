@@ -71,10 +71,14 @@ CH <- crop(CH_difference_untrimmed, study_area_extent_a)
 CC <- crop(CC_difference_untrimmed, study_area_extent_a)
 imp_surf <- crop(imp_surf_difference_untrimmed_a, study_area_extent_a)
 
-plot(HLI)
-plot(imp_surf)
-plot(CH_difference_untrimmed)
-plot(CC_difference_untrimmed)
+# plot(HLI)
+# plot(imp_surf)
+# plot(CH_difference_untrimmed)
+# plot(CC_difference_untrimmed)
+
+#sink("/scratch/las80898/pcadapt_output/GFMxWM_snp_pc_associations.txt")
+#print(snp_pc)
+#sink()
 
 # validate crop
 crs(HLI)

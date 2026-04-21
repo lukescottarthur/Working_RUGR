@@ -10,13 +10,16 @@
 #SBATCH --mail-user=las80898@uga.edu
 #SBATCH --mail-type=BEGIN,END,FAIL
 
+#  conda create -n landscape_env -c conda-forge r-base r-essentials
+# conda install -c conda-forge r-terra   
+
 # activate R environment
 CONDA_BASE=$(conda info --base)
 source ${CONDA_BASE}/etc/profile.d/conda.sh
-conda activate test_env
+conda activate landscape_env
 
 #set output directory variable
-OUTDIR="/scratch/las80898/bonasa/"                 
+OUTDIR="/scratch/las80898/bonasa/"
 
 #if output directory doesn't exist, create it
 if [ ! -d "$OUTDIR" ]
