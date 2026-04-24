@@ -2,6 +2,7 @@
 
 library(spatialEco)
 library(terra)
+library(codetools)
 
 # jobs to do:
 # 1. calculate hli from elevation
@@ -23,7 +24,7 @@ CH_2000_untrimmed <- rast("canopy_height_2000.tif")
 CH_2000_untrimmed_focal <- focal(CH_2000_untrimmed, win = 3, fun = sd, na.rm = TRUE)
 # CH_2019
 CH_2019_untrimmed <- rast("canopy_height_2019.tif")
-CH_2019_untrimmed_focal <- focal(CH_2019_untrimmed_resample, win = 3, fun = sd, na.rm = TRUE)
+CH_2019_untrimmed_focal <- focal(CH_2019_untrimmed, win = 3, fun = sd, na.rm = TRUE)
 # subtract rasters
 CH_difference_untrimmed <- CH_2019_untrimmed_focal - CH_2000_untrimmed_focal
 
