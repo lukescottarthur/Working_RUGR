@@ -1,0 +1,127 @@
+Downloading GitHub repo nspope/corMLPE@HEAD
+Installing 1 packages: Rcpp
+trying URL 'https://cloud.r-project.org/src/contrib/Rcpp_1.1.1-1.1.tar.gz'
+Content type 'application/x-gzip' length 1883279 bytes (1.8 MB)
+==================================================
+downloaded 1.8 MB
+
+* installing *source* package ‘Rcpp’ ...
+** this is package ‘Rcpp’ version ‘1.1.1-1.1’
+** package ‘Rcpp’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+using C++ compiler: ‘x86_64-conda-linux-gnu-c++ (conda-forge gcc 15.2.0-18) 15.2.0’
+In file included from /home/las80898/conda/envs/landscape_env/lib/gcc/x86_64-conda-linux-gnu/15.2.0/include/c++/bits/locale_facets_nonio.h:41,
+                 from /home/las80898/conda/envs/landscape_env/lib/gcc/x86_64-conda-linux-gnu/15.2.0/include/c++/locale:45,
+                 from /home/las80898/conda/envs/landscape_env/lib/gcc/x86_64-conda-linux-gnu/15.2.0/include/c++/iomanip:53,
+                 from ../inst/include/RcppCommon.h:54,
+                 from ../inst/include/Rcpp.h:27,
+                 from api.cpp:26:
+/home/las80898/conda/envs/landscape_env/lib/gcc/x86_64-conda-linux-gnu/15.2.0/include/c++/ctime:82:11: error: 'timespec_get' has not been declared in '::'
+   82 |   using ::timespec_get;
+      |           ^~~~~~~~~~~~
+make: *** [/home/las80898/conda/envs/landscape_env/lib/R/etc/Makeconf:211: api.o] Error 1
+ERROR: compilation failed for package ‘Rcpp’
+* removing ‘/home/las80898/conda/envs/landscape_env/lib/R/library/Rcpp’
+* restoring previous ‘/home/las80898/conda/envs/landscape_env/lib/R/library/Rcpp’
+
+The downloaded source packages are in
+	‘/tmp/Rtmp0RsVi8/downloaded_packages’
+Updating HTML index of packages in '.Library'
+Making 'packages.html' ... done
+Running `R CMD build`...
+* installing *source* package ‘corMLPE’ ...
+** this is package ‘corMLPE’ version ‘0.0.3’
+** using staged installation
+** libs
+using C++ compiler: ‘x86_64-conda-linux-gnu-c++ (conda-forge gcc 15.2.0-18) 15.2.0’
+using C++11
+In file included from /home/las80898/conda/envs/landscape_env/lib/R/library/RcppArmadillo/include/armadillo:27,
+                 from /home/las80898/conda/envs/landscape_env/lib/R/library/RcppArmadillo/include/RcppArmadillo/interface/RcppArmadilloForward.h:51,
+                 from /home/las80898/conda/envs/landscape_env/lib/R/library/RcppArmadillo/include/RcppArmadillo.h:29,
+                 from RcppExports.cpp:4:
+/home/las80898/conda/envs/landscape_env/lib/R/library/RcppArmadillo/include/armadillo_bits/compiler_check.hpp:82:4: error: #error "*** C++14 compiler required; enable C++14 mode in your compiler, or use an earlier version of Armadillo"
+   82 |   #error "*** C++14 compiler required; enable C++14 mode in your compiler, or use an earlier version of Armadillo"
+      |    ^~~~~
+In file included from /home/las80898/conda/envs/landscape_env/lib/R/library/RcppArmadillo/include/armadillo:501:
+/home/las80898/conda/envs/landscape_env/lib/R/library/RcppArmadillo/include/armadillo_bits/fn_accu.hpp:27:1: error: 'accu' function uses 'auto' type specifier without trailing return type
+   27 | auto
+      | ^~~~
+/home/las80898/conda/envs/landscape_env/lib/R/library/RcppArmadillo/include/armadillo_bits/fn_accu.hpp:27:1: note: deduced return type only available with '-std=c++14' or '-std=gnu++14'
+/home/las80898/conda/envs/landscape_env/lib/R/library/RcppArmadillo/include/armadillo_bits/fn_accu.hpp:42:1: error: 'accu' function uses 'auto' type specifier without trailing return type
+   42 | auto
+      | ^~~~
+/home/las80898/conda/envs/landscape_env/lib/R/library/RcppArmadillo/include/armadillo_bits/fn_accu.hpp:42:1: note: deduced return type only available with '-std=c++14' or '-std=gnu++14'
+/home/las80898/conda/envs/landscape_env/lib/R/library/RcppArmadillo/include/armadillo_bits/fn_accu.hpp:57:1: error: 'accu' function uses 'auto' type specifier without trailing return type
+   57 | auto
+      | ^~~~
+/home/las80898/conda/envs/landscape_env/lib/R/library/RcppArmadillo/include/armadillo_bits/fn_accu.hpp:57:1: note: deduced return type only available with '-std=c++14' or '-std=gnu++14'
+make: *** [/home/las80898/conda/envs/landscape_env/lib/R/etc/Makeconf:211: RcppExports.o] Error 1
+ERROR: compilation failed for package ‘corMLPE’
+* removing ‘/home/las80898/conda/envs/landscape_env/lib/R/library/corMLPE’
+Warning messages:
+1: In i.p(...) : installation of package ‘Rcpp’ had non-zero exit status
+2: In i.p(...) :
+  installation of package ‘/tmp/Rtmp0RsVi8/file2e808f2c741ccd/corMLPE_0.0.3.tar.gz’ had non-zero exit status
+Downloading GitHub repo nspope/radish@HEAD
+Skipping 1 packages not available: corMLPE
+Installing 3 packages: Rcpp, igraph, corMLPE
+trying URL 'https://cloud.r-project.org/src/contrib/Rcpp_1.1.1-1.1.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/igraph_2.3.0.tar.gz'
+* installing *source* package ‘Rcpp’ ...
+** this is package ‘Rcpp’ version ‘1.1.1-1.1’
+** package ‘Rcpp’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+using C++ compiler: ‘x86_64-conda-linux-gnu-c++ (conda-forge gcc 15.2.0-18) 15.2.0’
+In file included from /home/las80898/conda/envs/landscape_env/lib/gcc/x86_64-conda-linux-gnu/15.2.0/include/c++/bits/locale_facets_nonio.h:41,
+                 from /home/las80898/conda/envs/landscape_env/lib/gcc/x86_64-conda-linux-gnu/15.2.0/include/c++/locale:45,
+                 from /home/las80898/conda/envs/landscape_env/lib/gcc/x86_64-conda-linux-gnu/15.2.0/include/c++/iomanip:53,
+                 from ../inst/include/RcppCommon.h:54,
+                 from ../inst/include/Rcpp.h:27,
+                 from api.cpp:26:
+/home/las80898/conda/envs/landscape_env/lib/gcc/x86_64-conda-linux-gnu/15.2.0/include/c++/ctime:82:11: error: 'timespec_get' has not been declared in '::'
+   82 |   using ::timespec_get;
+      |           ^~~~~~~~~~~~
+make: *** [/home/las80898/conda/envs/landscape_env/lib/R/etc/Makeconf:211: api.o] Error 1
+ERROR: compilation failed for package ‘Rcpp’
+* removing ‘/home/las80898/conda/envs/landscape_env/lib/R/library/Rcpp’
+* restoring previous ‘/home/las80898/conda/envs/landscape_env/lib/R/library/Rcpp’
+* installing *source* package ‘igraph’ ...
+** this is package ‘igraph’ version ‘2.3.0’
+** package ‘igraph’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+using C compiler: ‘x86_64-conda-linux-gnu-cc (conda-forge gcc 15.2.0-18) 15.2.0’
+using C++ compiler: ‘x86_64-conda-linux-gnu-c++ (conda-forge gcc 15.2.0-18) 15.2.0’
+In file included from vendor/cigraph/src/layout/drl/drl_graph.h:42,
+                 from vendor/cigraph/src/layout/drl/drl_graph.cpp:42:
+/home/las80898/conda/envs/landscape_env/lib/gcc/x86_64-conda-linux-gnu/15.2.0/include/c++/ctime:82:11: error: 'timespec_get' has not been declared in '::'
+   82 |   using ::timespec_get;
+      |           ^~~~~~~~~~~~
+make: *** [/home/las80898/conda/envs/landscape_env/lib/R/etc/Makeconf:211: vendor/cigraph/src/layout/drl/drl_graph.o] Error 1
+ERROR: compilation failed for package ‘igraph’
+* removing ‘/home/las80898/conda/envs/landscape_env/lib/R/library/igraph’
+* restoring previous ‘/home/las80898/conda/envs/landscape_env/lib/R/library/igraph’
+
+The downloaded source packages are in
+	‘/tmp/Rtmp0RsVi8/downloaded_packages’
+Updating HTML index of packages in '.Library'
+Making 'packages.html' ... done
+Running `R CMD build`...
+ERROR: dependency ‘corMLPE’ is not available for package ‘radish’
+Perhaps try a variation of:
+install.packages('corMLPE')
+* removing ‘/home/las80898/conda/envs/landscape_env/lib/R/library/radish’
+Warning messages:
+1: package ‘corMLPE’ is not available for this version of R
+
+A version of this package for your version of R might be available elsewhere,
+see the ideas at
+https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages 
+2: In i.p(...) : installation of package ‘Rcpp’ had non-zero exit status
+3: In i.p(...) : installation of package ‘igraph’ had non-zero exit status
+4: In i.p(...) :
+  installation of package ‘/tmp/Rtmp0RsVi8/file2e808fb389e87/radish_0.0.2.tar.gz’ had non-zero exit status
+Error in library(radish) : there is no package called ‘radish’
+Execution halted

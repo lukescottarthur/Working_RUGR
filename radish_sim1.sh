@@ -20,8 +20,9 @@
 # conda install raster
 # conda install r-readxl
 # conda install r-adegenet
-conda install r-ggplot2
-# conda install r-sp r-GeNetIt
+# conda install r-ggplot2
+# conda install r-sp 
+# conda install r-GeNetIt
 # conda install r-radish
 
 # activate R environment
