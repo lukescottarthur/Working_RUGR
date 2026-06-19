@@ -1,0 +1,18 @@
+PLINK v2.0.0-a.6.9LM 64-bit Intel (29 Jan 2025)
+Options in effect:
+  --allow-extra-chr
+  --make-bed
+  --out cohort
+  --vcf biallelic_snps.vcf.gz
+
+Hostname: c4-21
+Working directory: /home/las80898/GENE8940_parallel_2
+Start time: Fri Jun 19 14:15:35 2026
+
+Random number seed: 1781892935
+192030 MiB RAM detected, ~163182 available; reserving 96015 MiB for main
+workspace.
+Using up to 4 compute threads.
+Error: Failed to open biallelic_snps.vcf.gz : No such file or directory.
+
+End time: Fri Jun 19 14:15:35 2026
