@@ -1,0 +1,122 @@
+This is a workflow for bonasa popgen analyses
+This begins with vcf.gz files that have been filtered.
+
+~~For all analyses:
+
+1. Merging vcf files into cohort
+# Merge per-sample vcf.gz files into a cohort VCF
+bcftools merge -O z -o cohort.vcf.gz *.vcf.gz
+bcftools index -t cohort.vcf.gz
+
+# Keep only biallelic SNPs
+bcftools view -O z -o biallelic_snps.vcf.gz \
+  -m2 -M2 -v snps biallelic_snps.vcf.gz
+
+
+2. relatedness with KING
+# Convert to PLINK format first
+plink2 --vcf biallelic_snps.vcf.gz --make-bed --out cohort --allow-extra-chr
+
+# Run KING robust kinship estimation
+king -b cohort.bed --kinship --prefix king_output
+Remove one individual from each pair exceeding your kinship threshold (typically 2nd degree, >0.0884) before population structure analyses.
+# add code to remove pairs
+
+3. MAF with plink
+# MAF filter + genotype rate filter
+plink2 --bfile cohort \
+  --maf 0.05 \
+  --geno 0.05 \
+  --hwe 1e-6 \
+  --make-bed \
+  --out cohort_maf_filtered \
+  --allow-extra-chr
+
+4. Save two datasets, one for structure, ROH, PCA; the other for the rest
+
+~~~STRUCTURE, ROH, PCA:
+
+1. LD pruning
+# LD pruning (window=50kb, step=10 SNPs, r²<0.1 for PCA/ADMIXTURE)
+# Use r²<0.3–0.5 for GWAS-adjacent analyses
+plink2 --bfile cohort_maf_filtered \
+  --indep-pairwise 50 10 0.1 \
+  --out pruned_snps \
+  --allow-extra-chr
+
+plink2 --bfile cohort_maf_filtered \
+  --extract pruned_snps.prune.in \
+  --make-bed \
+  --out cohort_LD_pruned \
+  --allow-extra-chr
+
+2. Population structure PCA with plink
+# PLINK2 PCA (use LD-pruned dataset)
+plink2 --bfile cohort_LD_pruned \
+  --pca 20 \
+  --out cohort_pca \
+  --allow-extra-chr
+
+3. admixture
+# Run for K=1 to K=10, use cross-validation to select best K
+for K in $(seq 1 10); do
+  admixture --cv cohort_LD_pruned.bed $K | tee log_K${K}.out
+done
+
+# Extract CV errors to select optimal K
+grep "CV error" log_K*.out | sort -t: -k2 -n
+
+4. inbreeding and ROH
+# BCFtools ROH (HMM-based, best for WGS)
+bcftools roh --AF-tag AF -O r -o roh_output.txt filtered.vcf.gz
+
+#Calculate F_ROH as: sum of ROH length (>1Mb) / total autosomal genome length
+
+~~~ un-pruned dataset
+Diversity, Tajima's D, Fst, etc using 
+
+1. diversity (pixy)
+# Generate all-sites VCF (needed for pixy)
+# This should come from GATK GenotypeGVCFs with -all-sites flag
+# or bcftools mpileup with appropriate settings
+
+# pixy (unbiased π, dxy, Fst)
+pixy --stats pi fst dxy \
+  --vcf all_sites.vcf.gz \
+  --populations pop_file.txt \
+  --window_size 10000 \
+  --n_cores 8 \
+  --output_folder pixy_output
+
+2. Tajima's D
+  # Tajima's D per population (split VCF by population first)
+vcftools --gzvcf pop1.vcf.gz \
+  --TajimaD 10000 \
+  --out pop1_tajima
+
+3. Fst
+# Weir & Cockerham Fst (acceptable but pixy preferred)
+vcftools --gzvcf biallelic_snps.vcf.gz \
+  --weir-fst-pop pop1.txt \
+  --weir-fst-pop pop2.txt \
+  --fst-window-size 10000 \
+  --out fst_pop1_pop2
+
+4. smc++ - demographic history
+# Convert VCF to SMC++ format
+smc++ vcf2smc filtered.vcf.gz smc_pop1.smc.gz CHR1 POP1:sample1,sample2,sample3
+
+# Fit population size history
+smc++ estimate -o smcpp_output/ 1.25e-8 smc_pop1.smc.gz
+
+# Joint inference for split times between populations
+smc++ split -o split_output/ smcpp_pop1/ smcpp_pop2/
+smc++ plot split_plot.pdf split_output/model.final.json
+
+5. fastsimcoal2/dadi/discoal - modeling specific scenarios (bottleneck)
+# Generate SFS with easySFS (wrapper around VCFtools/custom scripts)
+easySFS.py -i filtered.vcf.gz -p pop_file.txt \
+  --proj 20,20 -o sfs_output --dtype int
+
+# fastsimcoal2 — fits complex models, estimates parameters with CL
+fsc27 -t model.tpl -e model.est -n 100000 -m -M -L 40 -s0 -q
