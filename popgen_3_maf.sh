@@ -16,14 +16,11 @@ source "${CONDA_BASE}/etc/profile.d/conda.sh"
 conda activate popgen_env
 
 INDIR="/home/las80898/bonasa/vcf_reads_2"
-OUTDIR='/home/las80898/bonasa/popgen'
+OUTDIR='/home/las80898/bonasa/popgen/pgen_files'
 
+mkdir -p "$OUTDIR"
+
+cd $INDIR
 
 # MAF filter + genotype rate filter
-plink2 --bfile cohort \
-  --maf 0.05 \
-  --geno 0.05 \
-  --hwe 1e-6 \
-  --make-bed \
-  --out cohort_maf_filtered \
-  --allow-extra-chr
+plink2 --vcf biallelic_snps.vcf.gz --maf 0.05 --geno 0.1 --hwe 1e-6 --make-pgen --out $OUTDIR/cohort_maf_filtered --allow-extra-chr
