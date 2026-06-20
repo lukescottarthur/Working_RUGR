@@ -25,3 +25,6 @@ bcftools index -t cohort.vcf.gz
 
 # Keep only biallelic SNPs
 bcftools view -O z -o biallelic_snps.vcf.gz -m2 -M2 -v snps cohort.vcf.gz
+
+# make index file 
+bcftools index -t biallelic_snps.vcf.gz

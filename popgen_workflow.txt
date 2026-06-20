@@ -13,13 +13,8 @@ bcftools view -O z -o biallelic_snps.vcf.gz \
   -m2 -M2 -v snps biallelic_snps.vcf.gz
 
 
-2. relatedness with KING
-# Convert to PLINK format first
-plink2 --vcf biallelic_snps.vcf.gz --make-bed --out cohort --allow-extra-chr
-
-# Run KING robust kinship estimation
-king -b cohort.bed --kinship --prefix king_output
-Remove one individual from each pair exceeding your kinship threshold (typically 2nd degree, >0.0884) before population structure analyses.
+2. relatedness with Plink2 -make king table (instead of KING)
+plink2 --vcf input.vcf.gz --make-king-table --out results   
 # add code to remove pairs
 
 3. MAF with plink
