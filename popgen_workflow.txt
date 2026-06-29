@@ -31,6 +31,8 @@ plink2 --bfile cohort \
 
 ~~~STRUCTURE, ROH, PCA:
 
+popgen_A_1
+
 1. LD pruning
 # LD pruning (window=50kb, step=10 SNPs, r²<0.1 for PCA/ADMIXTURE)
 # Use r²<0.3–0.5 for GWAS-adjacent analyses
@@ -69,6 +71,8 @@ bcftools roh --AF-tag AF -O r -o roh_output.txt filtered.vcf.gz
 
 ~~~ un-pruned dataset
 Diversity, Tajima's D, Fst, etc using 
+
+popgen_B_1
 
 1. diversity (pixy)
 # Generate all-sites VCF (needed for pixy)
