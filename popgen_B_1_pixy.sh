@@ -24,7 +24,7 @@ cd $OUTDIR
 # for next analyses, add fst and dxy after --stats
 
 pixy --stats pi \
-  --vcf cohort_maf_filtered.vcf \
+  --vcf cohort_maf_filtered.vcf.gz \
   --populations pop_file.txt \
   --window_size 10000 \
   --n_cores 4 \

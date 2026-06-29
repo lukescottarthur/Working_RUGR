@@ -72,6 +72,13 @@ bcftools roh --AF-tag AF -O r -o roh_output.txt filtered.vcf.gz
 ~~~ un-pruned dataset
 Diversity, Tajima's D, Fst, etc using 
 
+convert to vcf.gz
+make population file for pixy
+bcftools query -l cohort_maf_filtered.vcf.gz > pop_file.txt
+mv pop_file.txt /home/las80898/GENE8940_parallel_2
+# add another column of population names (make sure tab indented)
+mv pop_file.txt /home/las80898/bonasa/popgen/pixy
+
 popgen_B_1
 
 1. diversity (pixy)
