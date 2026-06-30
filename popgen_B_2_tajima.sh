@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=popgen_B_1_pixy
+#SBATCH --job-name=popgen_B_2_tajima
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
@@ -19,11 +19,7 @@ OUTDIR="/scratch/las80898/popgen"
 
 cd $OUTDIR
 
-# for next analyses, add fst and dxy after --stats
-
-pixy --stats pi \
-  --vcf cohort_filtered.vcf.gz \
-  --populations pop_file.txt \
-  --window_size 10000 \
-  --n_cores 4 \
-  --output_folder pixy_output
+#Tajima's D per population (split VCF by population first)
+vcftools --gzvcf cohort_filtered.vcf.gz \
+  --TajimaD 10000 \
+  --out pennsylvania_tajima

@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=popgen_B_1_pixy
+#SBATCH --job-name=popgen_A_3_admixture
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
@@ -19,11 +19,8 @@ OUTDIR="/scratch/las80898/popgen"
 
 cd $OUTDIR
 
-# for next analyses, add fst and dxy after --stats
 
-pixy --stats pi \
-  --vcf cohort_filtered.vcf.gz \
-  --populations pop_file.txt \
-  --window_size 10000 \
-  --n_cores 4 \
-  --output_folder pixy_output
+# BCFtools ROH (HMM-based, best for WGS)
+bcftools roh --AF-tag AF -O r -o roh_output.txt filtered.vcf.gz
+
+#Calculate F_ROH as: sum of ROH length (>1Mb) / total autosomal genome length

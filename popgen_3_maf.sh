@@ -16,7 +16,7 @@ source "${CONDA_BASE}/etc/profile.d/conda.sh"
 conda activate popgen_env
 
 INDIR="/scratch/las80898/bonasa/vcf_reads_2"
-OUTDIR="/scratch/las80898/popgen/"
+OUTDIR="/scratch/las80898/popgen"
 
 mkdir -p "$OUTDIR"
 

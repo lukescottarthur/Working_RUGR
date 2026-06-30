@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=popgen_B_1_pixy
+#SBATCH --job-name=popgen_A_2_pca
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
@@ -17,13 +17,8 @@ conda activate popgen_env
 
 OUTDIR="/scratch/las80898/popgen"
 
-cd $OUTDIR
-
-# for next analyses, add fst and dxy after --stats
-
-pixy --stats pi \
-  --vcf cohort_filtered.vcf.gz \
-  --populations pop_file.txt \
-  --window_size 10000 \
-  --n_cores 4 \
-  --output_folder pixy_output
+# PLINK2 PCA (use LD-pruned dataset)
+plink2 --bfile cohort_LD_pruned \
+  --pca 20 \
+  --out cohort_pca \
+  --allow-extra-chr

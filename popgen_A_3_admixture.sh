@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=popgen_B_1_pixy
+#SBATCH --job-name=popgen_A_3_admixture
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
@@ -19,11 +19,10 @@ OUTDIR="/scratch/las80898/popgen"
 
 cd $OUTDIR
 
-# for next analyses, add fst and dxy after --stats
+# Run for K=1 to K=10, use cross-validation to select best K
+for K in $(seq 1 10); do
+  admixture --cv cohort_LD_pruned.bed $K | tee log_K${K}.out
+done
 
-pixy --stats pi \
-  --vcf cohort_filtered.vcf.gz \
-  --populations pop_file.txt \
-  --window_size 10000 \
-  --n_cores 4 \
-  --output_folder pixy_output
+# Extract CV errors to select optimal K
+grep "CV error" log_K*.out | sort -t: -k2 -n
