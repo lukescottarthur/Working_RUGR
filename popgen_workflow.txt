@@ -12,12 +12,17 @@ bcftools index -t cohort.vcf.gz
 bcftools view -O z -o biallelic_snps.vcf.gz \
   -m2 -M2 -v snps biallelic_snps.vcf.gz
 
-
 2. relatedness with Plink2 -make king table (instead of KING)
 plink2 --vcf input.vcf.gz --make-king-table --out results   
 # add code to remove pairs
 
-3. MAF with plink
+3a. Split into variant and invariant sites (MAF filters remove invariant sites)
+#extract invariant
+vcftools --gzvcf input.vcf.gz \
+  --max-maf 0 \
+  --recode --stdout | bgzip -c > invariant.vcf.gz   
+
+3b. MAF with plink
 # MAF filter + genotype rate filter
 plink2 --bfile cohort \
   --maf 0.05 \
@@ -26,6 +31,16 @@ plink2 --bfile cohort \
   --make-bed \
   --out cohort_maf_filtered \
   --allow-extra-chr
+
+3c. index and concatenate invariant and variant files
+
+tabix invariant.vcf.gz
+tabix variants.vcf.gz
+
+bcftools concat \
+  --allow-overlaps \
+  variants.vcf.gz invariant.vcf.gz \
+  -O z -o combined_filtered.vcf.gz   
 
 4. Save two datasets, one for structure, ROH, PCA; the other for the rest
 

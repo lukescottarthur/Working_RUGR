@@ -15,9 +15,7 @@ CONDA_BASE=$(conda info --base)
 source "${CONDA_BASE}/etc/profile.d/conda.sh"
 conda activate popgen_env
 
-OUTDIR="/home/las80898/bonasa/popgen/pixy"
-
-mkdir -p "$OUTDIR"
+OUTDIR="/scratch/las80898/popgen/"
 
 cd $OUTDIR
 

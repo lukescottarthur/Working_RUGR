@@ -1,0 +1,18 @@
+/var/spool/slurmd/job46492363/slurm_script: line 23: cd: /scratch/las80898/bonasa/vcf_reads_2: No such file or directory
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf biallelic_snps.vcf.gz
+	--max-maf 0
+	--recode
+	--stdout
+
+stat error: No such file or directory
+Error: Can't determine file type of biallelic_snps.vcf.gz
+Error: Failed to open biallelic_snps.vcf.gz : No such file or directory.
+[tabix] the index file exists. Please use '-f' to overwrite.
+Checking the headers and starting positions of 2 files
+[E::bcf_hdr_read] Input is not detected as bcf or vcf format
+Failed to parse header: invariant.vcf.gz
