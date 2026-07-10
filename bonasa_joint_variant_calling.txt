@@ -1,0 +1,11 @@
+# Code for joint variant calling
+
+## STEP 1: generate region list using .sh script
+# output was 22 chunks
+
+## STEP 2: submit .sh script
+
+## STEP 3: concatenate chunks into final vcf
+bcftools concat -a -Oz -o cohort_allsites.vcf.gz \
+  $(ls -v /scratch/las80898/bonasa/vcf_files/regions_*.vcf.gz)
+bcftools index -t cohort_allsites.vcf.gz

@@ -19,13 +19,10 @@ conda activate bonasa_env
 # exits job if errors are encountered
 set -euo pipefail
 
-# set diredtory paths
-OUTDIR="/home/las80898/bonasa/vcf_files"
-BAMDIR="/home/las80898/bonasa/sorted_bam_files"
+# set directory paths
+OUTDIR="/scratch/las80898/bonasa/vcf_reads_with_invariant"
+BAMDIR="/scratch/las80898/bonasa/sorted_bam_files"
 mkdir -p "$OUTDIR"
-
-# log which sample is processed
-echo "Processing sample: $SAMPLE (BAM: $BAM)"
 
 # Build an array of all BAM files, then select one by SLURM task index
 mapfile -t BAM_FILES < <(find "${BAMDIR}" -maxdepth 1 -name "*.bam" | sort)
@@ -38,17 +35,23 @@ if [[ -z "$BAM" ]]; then
     exit 1
 fi
 
+# log which sample is processed
+echo "Processing sample: $SAMPLE (BAM: $BAM)"
+
+
 # Genotype likelihood, Variant call and filter (MQ > 60; quality score > 40; mapped reads > 10)
 
 bcftools mpileup \
     -Ou \
     --threads $SLURM_CPUS_PER_TASK \
     --min-MQ 60 \
-    -f /home/las80898/bonasa/Bumbellus.assembly.fa \
+    -f /scratch/las80898/bonasa/Bumbellus.assembly.fa \
     "$BAM" \
-  | bcftools call --threads $SLURM_CPUS_PER_TASK -mv -Ou \
-  | bcftools filter -Oz -e 'QUAL<40 || DP<10' \
+  | bcftools call --threads $SLURM_CPUS_PER_TASK -m -Ou \
+  | bcftools filter -Oz -e '(ALT!="." && QUAL<40) || DP<10' \
   > "${OUTDIR}/${SAMPLE}.vcf.gz"
 
   # Index the output for downstream tools
 bcftools index --tbi "${OUTDIR}/${SAMPLE}.vcf.gz"
+
+

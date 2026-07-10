@@ -10,10 +10,10 @@
 #SBATCH --mail-user=las80898@uga.edu
 #SBATCH --mail-type=BEGIN,END,FAIL
 
-cd /home/las80898/
+cd /home/las80898/bonasa
 
-mv bonasa /scratch/las80898/
-mv diploSHIC /scratch/las80898/
-mv mallard_data /scratch/las80898/
-mv discoal /scratch/las80898/
-mv exampleApplication.tar.gz /scratch/las80898
+mv vcf_reads_2 /scratch/las80898/bonasa/
+mv popgen /scratch/las80898/bonasa/
+mv pcr_reads /scratch/las80898/bonasa/
+mv Bumbellus.assembly.fa /scratch/las80898/bonasa/
+mv Bumbellus.assembly.fa.fai /scratch/las80898/bonasa/

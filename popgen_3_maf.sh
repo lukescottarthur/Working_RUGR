@@ -44,3 +44,5 @@ bcftools concat \
   --allow-overlaps \
   cohort_maf_filtered.vcf.gz invariant.vcf.gz \
   -O z -o cohort_filtered.vcf.gz
+
+tabix -p vcf cohort_filtered.vcf.gz
