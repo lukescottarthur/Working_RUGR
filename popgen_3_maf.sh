@@ -3,8 +3,8 @@
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
-#SBATCH --mem=16G
-#SBATCH --time=2:00:00
+#SBATCH --mem=164G
+#SBATCH --time=16:00:00
 #SBATCH --output=/home/las80898/GENE8940_parallel_2/%x_%A.out
 #SBATCH --error=/home/las80898/GENE8940_parallel_2/%x_%A.error
 #SBATCH --mail-user=las80898@uga.edu
