@@ -15,7 +15,7 @@ CONDA_BASE=$(conda info --base)
 source "${CONDA_BASE}/etc/profile.d/conda.sh"
 conda activate popgen_env
 
-INDIR="/scratch/las80898/bonasa/vcf_reads_2"
+INDIR="/scratch/las80898/bonasa/vcf_files"
 OUTDIR="/scratch/las80898/popgen"
 
 mkdir -p "$OUTDIR"
@@ -23,17 +23,17 @@ mkdir -p "$OUTDIR"
 cd $INDIR
 
 # split into variant and nonvariant sites
-vcftools --gzvcf biallelic_snps.vcf.gz \
+vcftools --gzvcf cohort_allsites.vcf.gz \
   --max-maf 0 \
-  --recode --stdout | bgzip -c > $OUTDIR/invariant.vcf.gz
+  --recode --stdout | bgzip -c > $OUTDIR/invariant_2.vcf.gz
 
-tabix $OUTDIR/invariant.vcf.gz
+tabix $OUTDIR/invariant_2.vcf.gz
 
 # MAF filter + genotype rate filter
 # NOTE: change --geno to .1 or .05 for my dataset
-#plink2 --vcf biallelic_snps.vcf.gz --maf 0.05 --geno 0.5 --hwe 1e-6 --make-pgen --out $OUTDIR/cohort_maf_filtered --allow-extra-chr
+#plink2 --vcf cohort_allsites.vcf.gz --maf 0.05 --geno 0.5 --hwe 1e-6 --make-pgen --out $OUTDIR/cohort_maf_filtered_allsites --allow-extra-chr
 
-plink2 --vcf biallelic_snps.vcf.gz --maf 0.05 --geno 0.5 --hwe 1e-6 --export vcf bgz --out $OUTDIR/cohort_maf_filtered --allow-extra-chr
+plink2 --vcf cohort_allsites.vcf.gz --maf 0.05 --geno 0.5 --hwe 1e-6 --export vcf bgz --out $OUTDIR/cohort_maf_filtered_allsites --allow-extra-chr
 
 tabix -p vcf $OUTDIR/cohort_maf_filtered.vcf.gz
 
@@ -42,7 +42,7 @@ cd $OUTDIR
 # combine files
 bcftools concat \
   --allow-overlaps \
-  cohort_maf_filtered.vcf.gz invariant.vcf.gz \
-  -O z -o cohort_filtered.vcf.gz
+  cohort_maf_filtered_allsites.vcf.gz invariant_2.vcf.gz \
+  -O z -o cohort_filtered_allsites.vcf.gz
 
-tabix -p vcf cohort_filtered.vcf.gz
+tabix -p vcf cohort_filtered_allsites.vcf.gz

@@ -15,7 +15,7 @@ CONDA_BASE=$(conda info --base)
 source "${CONDA_BASE}/etc/profile.d/conda.sh"
 conda activate popgen_env
 
-INDIR='/home/las80898/bonasa/vcf_reads_2'
+INDIR='/scratch/las80898/bonasa/vcf_files'
 OUTDIR='/home/las80898/bonasa/popgen/king_table'
 
 mkdir -p "$OUTDIR"
@@ -24,4 +24,4 @@ cd $INDIR
 
 #Remove one individual from each pair exceeding your kinship threshold (typically 2nd degree, >0.0884) before population structure analyses.
 
-plink2 --vcf biallelic_snps.vcf.gz --make-king-table --allow-extra-chr --king-table-filter 0.0884 --out $OUTDIR/results
+plink2 --vcf cohort_allsites.vcf.gz --make-king-table --allow-extra-chr --king-table-filter 0.0884 --out $OUTDIR/results_2
