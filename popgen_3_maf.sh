@@ -12,36 +12,39 @@
 
 set -euo pipefail
 
-# Load conda environment
 CONDA_BASE=$(conda info --base)
 source "${CONDA_BASE}/etc/profile.d/conda.sh"
 conda activate popgen_env
 
 INDIR="/scratch/las80898/bonasa/vcf_files"
-OUTDIR="/scratch/las80898/popgen"
-
+OUTDIR="/scratch/las80898/bonasa/popgen/cohort_files"
 mkdir -p "$OUTDIR"
 
 cd $INDIR
 
-# split into variant and nonvariant sites
+# invariant sites - filter directly on ALT="." (matches what pixy checks)
 bcftools view \
   --threads ${SLURM_CPUS_PER_TASK} \
-  -i 'AC==0 || AC==AN' \
+  -i 'ALT="."' \
   cohort_allsites.vcf.gz \
   -O z -o $OUTDIR/invariant_2.vcf.gz
 
-tabix $OUTDIR/invariant_2.vcf.gz
+tabix -p vcf $OUTDIR/invariant_2.vcf.gz
+
+echo "=== Check: invariant sites extracted ==="
+INVARIANT_COUNT=$(zcat $OUTDIR/invariant_2.vcf.gz | grep -vc "^#")
+echo "Invariant sites in invariant_2.vcf.gz: ${INVARIANT_COUNT}"
+if [[ "$INVARIANT_COUNT" -eq 0 ]]; then
+    echo "ERROR: No invariant sites found — aborting before downstream steps." >&2
+    exit 1
+fi
 
 # MAF filter + genotype rate filter
-# NOTE: change --geno to .1 or .05 for my dataset
-#plink2 --vcf cohort_allsites.vcf.gz --maf 0.05 --geno 0.5 --hwe 1e-6 --make-pgen --out $OUTDIR/cohort_maf_filtered_allsites --allow-extra-chr
-
 plink2 \
   --vcf cohort_allsites.vcf.gz \
   --maf 0.05 \
-  --geno 0.5 \
-  --hwe 1e-6 \
+  --geno 0.1 \
+  --hwe 1e-6 0.001 \
   --export vcf bgz \
   --threads ${SLURM_CPUS_PER_TASK} \
   --memory 250000 \
@@ -52,10 +55,37 @@ tabix -p vcf $OUTDIR/cohort_maf_filtered_allsites.vcf.gz
 
 cd $OUTDIR
 
-# combine files
-bcftools concat \
-  --allow-overlaps \
+# combine files - concat does NOT sort, so pipe into bcftools sort
+bcftools concat --allow-overlaps \
   cohort_maf_filtered_allsites.vcf.gz invariant_2.vcf.gz \
-  -O z -o cohort_filtered_allsites.vcf.gz
+  -O u \
+| bcftools sort -O z -o cohort_filtered_allsites.vcf.gz -T $OUTDIR/tmp_sort
 
 tabix -p vcf cohort_filtered_allsites.vcf.gz
+
+echo "=== Check: final merged VCF composition ==="
+TOTAL_COUNT=$(zcat cohort_filtered_allsites.vcf.gz | grep -vc "^#")
+FINAL_INVARIANT_COUNT=$(zcat cohort_filtered_allsites.vcf.gz | grep -v "^#" | awk '$5=="."' | wc -l)
+FINAL_VARIANT_COUNT=$((TOTAL_COUNT - FINAL_INVARIANT_COUNT))
+
+echo "Total sites:            ${TOTAL_COUNT}"
+echo "Invariant sites (ALT=.): ${FINAL_INVARIANT_COUNT}"
+echo "Variant sites:           ${FINAL_VARIANT_COUNT}"
+
+if [[ "$FINAL_INVARIANT_COUNT" -eq 0 ]]; then
+    echo "ERROR: Final merged VCF has no invariant sites — pixy will fail." >&2
+    exit 1
+fi
+if [[ "$FINAL_VARIANT_COUNT" -eq 0 ]]; then
+    echo "WARNING: Final merged VCF has no variant sites — check MAF/geno/HWE thresholds." >&2
+fi
+
+echo "=== Check: sort order ==="
+if zcat cohort_filtered_allsites.vcf.gz | grep -v "^#" | awk '{print $1, $2}' | sort -k1,1 -k2,2n -c 2>/dev/null; then
+    echo "VCF is correctly coordinate-sorted."
+else
+    echo "ERROR: VCF is NOT sorted by coordinate." >&2
+    exit 1
+fi
+
+echo "Step 4 completed successfully. Ready for pixy."

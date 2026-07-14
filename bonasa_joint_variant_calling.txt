@@ -10,3 +10,5 @@ bcftools concat -a -Oz -o cohort_allsites.vcf.gz \
   $(ls -v /scratch/las80898/bonasa/vcf_files/regions_*.vcf.gz)
   
 bcftools index -t cohort_allsites.vcf.gz
+
+## this leads into popgen_relatedness, then MAF
