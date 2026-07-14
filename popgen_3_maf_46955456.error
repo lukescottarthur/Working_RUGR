@@ -1,0 +1,2 @@
+[E::hts_open_format] Failed to open file "cohort_allsites_2.vcf.gz" : No such file or directory
+Failed to read from cohort_allsites_2.vcf.gz: No such file or directory
