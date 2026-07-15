@@ -17,19 +17,19 @@ CONDA_BASE=$(conda info --base)
 source "${CONDA_BASE}/etc/profile.d/conda.sh"
 conda activate popgen_env
 
-INDIR="/scratch/las80898/bonasa/cohort_files"
-OUTDIR="/scratch/las80898/bonasa/popgen/tajima"
+INDIR="/scratch/las80898/bonasa/popgen/cohort_files"
+OUTDIR="/scratch/las80898/bonasa/popgen/LD"
 
 cd $INDIR
 
 # LD pruning (window=50kb, step=10 SNPs, r²<0.1 for PCA/ADMIXTURE)
 # Use r²<0.3–0.5 for GWAS-adjacent analyses
-plink2 --vcf cohort_filtered_allsites \
+plink2 --vcf cohort_filtered_allsites.vcf.gz \
   --indep-pairwise 50 10 0.1 \
   --out $OUTDIR/pruned_snps \
   --allow-extra-chr
 
-plink2 --vcf cohort_filtered_allsites \
+plink2 --vcf cohort_filtered_allsites.vcf.gz \
   --extract $OUTDIR/pruned_snps.prune.in \
   --make-bed \
   --out cohort_LD_pruned \

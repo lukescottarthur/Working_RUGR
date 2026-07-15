@@ -10,12 +10,14 @@
 #SBATCH --mail-user=las80898@uga.edu
 #SBATCH --mail-type=BEGIN,END,FAIL
 
+set -euo pipefail
+
 # Load conda environment
 CONDA_BASE=$(conda info --base)
 source "${CONDA_BASE}/etc/profile.d/conda.sh"
 conda activate popgen_env
 
-OUTDIR="/scratch/las80898/popgen"
+OUTDIR="/scratch/las80898/bonasa/popgen"
 
 cd $OUTDIR
 
