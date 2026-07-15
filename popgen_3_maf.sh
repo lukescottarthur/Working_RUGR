@@ -27,13 +27,13 @@ bcftools view \
   --threads ${SLURM_CPUS_PER_TASK} \
   -i 'ALT="."' \
   cohort_allsites.vcf.gz \
-  -O z -o $OUTDIR/invariant_2.vcf.gz
+  -O z -o $OUTDIR/invariant_sites.vcf.gz
 
-tabix -p vcf $OUTDIR/invariant_2.vcf.gz
+tabix -p vcf $OUTDIR/invariant_sites.vcf.gz
 
 echo "=== Check: invariant sites extracted ==="
-INVARIANT_COUNT=$(zcat $OUTDIR/invariant_2.vcf.gz | grep -vc "^#")
-echo "Invariant sites in invariant_2.vcf.gz: ${INVARIANT_COUNT}"
+INVARIANT_COUNT=$(zcat $OUTDIR/invariant_sites.vcf.gz | grep -vc "^#")
+echo "Invariant sites in invariant_sites.vcf.gz: ${INVARIANT_COUNT}"
 if [[ "$INVARIANT_COUNT" -eq 0 ]]; then
     echo "ERROR: No invariant sites found — aborting before downstream steps." >&2
     exit 1
@@ -48,16 +48,16 @@ plink2 \
   --export vcf bgz \
   --threads ${SLURM_CPUS_PER_TASK} \
   --memory 250000 \
-  --out $OUTDIR/cohort_maf_filtered_allsites \
+  --out $OUTDIR/variant_sites \
   --allow-extra-chr
 
-tabix -p vcf $OUTDIR/cohort_maf_filtered_allsites.vcf.gz
+tabix -p vcf $OUTDIR/variant_sites.vcf.gz
 
 cd $OUTDIR
 
 # combine files - concat does NOT sort, so pipe into bcftools sort
 bcftools concat --allow-overlaps \
-  cohort_maf_filtered_allsites.vcf.gz invariant_2.vcf.gz \
+  variant_sites.vcf.gz invariant_sites.vcf.gz \
   -O u \
 | bcftools sort -O z -o cohort_filtered_allsites.vcf.gz -T $OUTDIR/tmp_sort
 
