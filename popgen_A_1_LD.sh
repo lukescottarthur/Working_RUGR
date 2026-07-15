@@ -25,11 +25,22 @@ cd $INDIR
 # LD pruning (window=50kb, step=10 SNPs, r²<0.1 for PCA/ADMIXTURE)
 # Use r²<0.3–0.5 for GWAS-adjacent analyses
 plink2 --vcf cohort_filtered_allsites.vcf.gz \
+  --set-all-var-ids '@:#:$r:$a' \
+  --new-id-max-allele-len 500 \
+  --rm-dup exclude-all \
   --indep-pairwise 50 10 0.1 \
+  --snps-only just-acgt \
+  --max-alleles 2 \
   --out $OUTDIR/pruned_snps \
   --allow-extra-chr
 
-plink2 --vcf cohort_filtered_allsites.vcf.gz \
+# extravtion step
+  plink2 --vcf cohort_filtered_allsites.vcf.gz \
+  --set-all-var-ids '@:#:$r:$a' \
+  --new-id-max-allele-len 500 \
+  --snps-only just-acgt \
+  --max-alleles 2 \
+  --rm-dup exclude-all \
   --extract $OUTDIR/pruned_snps.prune.in \
   --make-bed \
   --out cohort_LD_pruned \
