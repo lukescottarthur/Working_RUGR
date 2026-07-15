@@ -22,6 +22,17 @@ OUTDIR="/scratch/las80898/bonasa/popgen"
 
 cd $INDIR
 
+# make backup bim and assign unique chromosome integers prior to running
+#cp cohort_LD_pruned.bim cohort_LD_pruned.bim.bak
+
+#awk 'BEGIN{OFS="\t"} 
+#{
+#  if (!($1 in map)) { map[$1] = ++n }
+#  $1 = map[$1]
+#  print
+#}' cohort_LD_pruned.bim.bak > cohort_LD_pruned.bim
+
+
 # Run for K=1 to K=10, use cross-validation to select best K
 for K in $(seq 1 10); do
   admixture --cv cohort_LD_pruned.bed $K | tee log_K${K}.out
