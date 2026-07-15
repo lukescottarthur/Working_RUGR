@@ -80,12 +80,10 @@ if [[ "$FINAL_VARIANT_COUNT" -eq 0 ]]; then
     echo "WARNING: Final merged VCF has no variant sites — check MAF/geno/HWE thresholds." >&2
 fi
 
-echo "=== Check: sort order ==="
-if zcat cohort_filtered_allsites.vcf.gz | grep -v "^#" | awk '{print $1, $2}' | sort -k1,1 -k2,2n -c 2>/dev/null; then
-    echo "VCF is correctly coordinate-sorted."
+echo "=== Check: tabix re-validation ==="
+if tabix -f -p vcf cohort_filtered_allsites.vcf.gz; then
+    echo "tabix confirms file is properly sorted and indexed."
 else
-    echo "ERROR: VCF is NOT sorted by coordinate." >&2
+    echo "ERROR: tabix indexing failed — file is not properly sorted." >&2
     exit 1
 fi
-
-echo "Step 4 completed successfully. Ready for pixy."
