@@ -43,5 +43,5 @@ plink2 --vcf cohort_filtered_allsites.vcf.gz \
   --rm-dup exclude-all \
   --extract $OUTDIR/pruned_snps.prune.in \
   --make-bed \
-  --out cohort_LD_pruned \
+  --out $OUTDIR/cohort_LD_pruned \
   --allow-extra-chr

@@ -22,8 +22,10 @@ OUTDIR="/scratch/las80898/bonasa/popgen/PCA"
 
 mkdir -p "$OUTDIR"
 
+cd $INDIR
+
 # PLINK2 PCA (use LD-pruned dataset)
 plink2 --bfile cohort_LD_pruned \
   --pca 20 \
-  --out cohort_pca \
+  --out $OUTDIR/cohort_pca \
   --allow-extra-chr
