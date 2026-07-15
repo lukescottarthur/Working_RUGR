@@ -15,11 +15,14 @@ CONDA_BASE=$(conda info --base)
 source "${CONDA_BASE}/etc/profile.d/conda.sh"
 conda activate popgen_env
 
-OUTDIR="/scratch/las80898/popgen"
+INDIR="/scratch/las80898/bonasa/popgen/cohort_files"
+OUTDIR="/scratch/las80898/bonasa/popgen/tajima"
 
-cd $OUTDIR
+mkdir -p "$OUTDIR"
+
+cd $INDIR
 
 #Tajima's D per population (split VCF by population first)
-vcftools --gzvcf cohort_filtered.vcf.gz \
+vcftools --gzvcf cohort_filtered_allsites.vcf.gz \
   --TajimaD 10000 \
-  --out pennsylvania_tajima
+  --out $OUTDIR/pennsylvania_tajima

@@ -4,7 +4,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=256G
-#SBATCH --time=24:00:00
+#SBATCH --time=8:00:00
 #SBATCH --output=/home/las80898/GENE8940_parallel_2/%x_%A.out
 #SBATCH --error=/home/las80898/GENE8940_parallel_2/%x_%A.error
 #SBATCH --mail-user=las80898@uga.edu
@@ -18,7 +18,7 @@ source "${CONDA_BASE}/etc/profile.d/conda.sh"
 conda activate popgen_env
 
 INDIR="/scratch/las80898/bonasa/popgen/cohort_files"
-OUTDIR="scratch/las80898/bonasa/popgen/pixy"
+OUTDIR="/scratch/las80898/bonasa/popgen/pixy"
 
 cd $INDIR
 
