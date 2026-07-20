@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=popgen_A_3_admixture
+#SBATCH --job-name=popgen_A_4_ROH
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
@@ -19,17 +19,20 @@ conda activate popgen_env
 
 INDIR="/scratch/las80898/bonasa/popgen/cohort_files"
 OUTDIR="/scratch/las80898/bonasa/popgen/ROH"
-
 INPUT_VCF="cohort_filtered_allsites.vcf.gz"
-GENOME_LENGTH=949996370
-# To get genome length: awk '{sum+=$2}END{print sum}' Bumbellus.assembly.fa.fai
-# update genome length to only large scaffolds: 
+
+# Total genome length: awk '{sum+=$2}END{print sum}' Bumbellus.assembly.fa.fai
+
+# Filtering scaffolds to large ones
+# bcftools index --stats cohort_filtered_allsites.vcf.gz | awk '$3 >= 1000000 {print $1"\t0\t"$3}' > large_scaffolds.txt
+
+# Update genome length used in ROH to only large scaffolds: 
 # bcftools index --stats cohort_filtered_allsites.vcf.gz | awk '$3 >= 1000000 {sum += $3} END {print "Autosomal-proxy bp:", sum}'
+
+GENOME_LENGTH=949996370
 
 cd $INDIR
 
-# filtering scaffolds to large ones
-#bcftools index --stats cohort_filtered_allsites.vcf.gz |     awk '$3 >= 1000000 {print $1}' > large_scaffolds.txt
 
 # PREP VCF
 bcftools view -m2 -M2 -v snps \
