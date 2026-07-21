@@ -21,6 +21,8 @@ INDIR="/scratch/las80898/bonasa/popgen/cohort_files"
 OUTDIR="/scratch/las80898/bonasa/popgen/ROH"
 INPUT_VCF="cohort_filtered_allsites.vcf.gz"
 
+mkdir -p "$OUTDIR"
+
 # Total genome length: awk '{sum+=$2}END{print sum}' Bumbellus.assembly.fa.fai
 
 # Filtering scaffolds to large ones
@@ -35,20 +37,18 @@ cd $INDIR
 
 
 # PREP VCF
-bcftools view -m2 -M2 -v snps \
-    --regions-file large_scaffolds.txt \
-    -O u "${INPUT_VCF}" \
-  | bcftools +fill-tags -O z -o cohort_prepped.vcf.gz --threads 8 -- -t AF
+#bcftools view -m2 -M2 -v snps \
+#    --regions-file large_scaffolds.txt \
+#    -O u "${INPUT_VCF}" \
+#  | bcftools +fill-tags -O z -o cohort_prepped.vcf.gz --threads 8 -- -t AF
 
-bcftools index -t cohort_prepped.vcf.gz
+#bcftools index -t cohort_prepped.vcf.gz
 
 # ROH
 bcftools roh \
     --AF-tag AF \
-    --GT-only \
-    --rec-rate 1e-8 \
-    --min-markers 50 \
-    --min-length 1e5 \
+    -G 30 \ # remove this i think
+    -M 1e-8 \
     -O r \
     -o $OUTDIR/roh_output.txt \
     cohort_prepped.vcf.gz
