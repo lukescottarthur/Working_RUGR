@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH --job-name=popgen_A_4_ROH
+#SBATCH --job-name=popgen_A_4_ROH_smaller_runs
 #SBATCH --partition=batch
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=164G
-#SBATCH --time=24:00:00
+#SBATCH --time=2:00:00
 #SBATCH --output=/home/las80898/GENE8940_parallel_2/%x_%A.out
 #SBATCH --error=/home/las80898/GENE8940_parallel_2/%x_%A.error
 #SBATCH --mail-user=las80898@uga.edu
@@ -47,7 +47,7 @@ cd $INDIR
 # ROH
 bcftools roh \
     --AF-tag AF \
-    -G 30 \ # remove this i think
+    -G 30 \
     -M 1e-8 \
     -O r \
     -o $OUTDIR/roh_output.txt \
@@ -69,7 +69,7 @@ python3 - <<PYEOF
 import pandas as pd
  
 GENOME_LEN = ${GENOME_LENGTH}
-MIN_ROH_BP = 1_000_000   # 1 Mb — captures recent inbreeding
+MIN_ROH_BP = 100_000   # 1 Mb — captures recent inbreeding
                           # change to 100_000 (100 kb) to include ancient inbreeding
  
 cols = ["Record","SampleID","Chr","Start","End","Length_bp","Markers","Quality"]
