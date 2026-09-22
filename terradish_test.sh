@@ -10,11 +10,11 @@
 #SBATCH --mail-user=las80898@uga.edu                            # Where to send mail (replace cbergman with your myid)
 #SBATCH --mail-type=END,FAIL                                    # Mail events (BEGIN, END, FAIL, ALL)
 
-
+# testing terradish
 # activate R conda environment
 CONDA_BASE=$(conda info --base)
 source ${CONDA_BASE}/etc/profile.d/conda.sh
 conda activate r_env_terradish
 
 # run R script
-R --no-save < /home/las80898/GENE8940_parallel_2/terradish_cluster_test_version2.R
+R --no-save < /home/las80898/GENE8940_parallel_2/terradish_cluster_test.R
