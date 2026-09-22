@@ -69,9 +69,6 @@ surface <- conductance_surface(
   nd2_coords,
   directions = 8,
   saveStack  = TRUE
-  # crop_buffer omitted -- the raster is already cropped in step 6, so a second
-  # crop_buffer here is redundant and, at small values, risks re-triggering the
-  # "outside raster extent" error from floating-point edge effects
 )
 
 fit_IBD <- terradish(
