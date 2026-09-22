@@ -1,0 +1,18 @@
+PLINK v2.0.0-a.6.9LM 64-bit Intel (29 Jan 2025)
+Options in effect:
+  --allow-extra-chr
+  --bfile cohort_LD_pruned
+  --out cohort_pca
+  --pca 20
+
+Hostname: ra7-10
+Working directory: /home/las80898/GENE8940_parallel_2
+Start time: Wed Jul 15 15:09:50 2026
+
+Random number seed: 1784142590
+773565 MiB RAM detected, ~637960 available; reserving 386782 MiB for main
+workspace.
+Using up to 4 compute threads.
+Error: Failed to open cohort_LD_pruned.fam : No such file or directory.
+
+End time: Wed Jul 15 15:09:50 2026

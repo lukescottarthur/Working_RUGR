@@ -1,0 +1,75 @@
+  ROH segments detected: 9378
+[3/3] Calculating F_ROH...
+
+ROH length distribution (all segments):
+bin
+<100kb       8489
+100-500kb     779
+500kb-1Mb      74
+1-2Mb          29
+2-5Mb           7
+>5Mb            0
+
+F_ROH summary (ROH >= 1 Mb, genome length = 949,996,370 bp):
+  Mean:   0.0011
+  Median: 0.0000
+  Min:    0.0000
+  Max:    0.0323
+
+Results saved to froh_results.txt
+                                                        SampleID  N_ROH  Total_ROH_Mb    F_ROH  Longest_ROH_Mb
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747763_sorted.bam     16        30.692 0.032308           4.038
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747772_sorted.bam      4         6.191 0.006517           2.016
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747760_sorted.bam      3         4.996 0.005259           2.477
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747758_sorted.bam      2         2.592 0.002728           1.307
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747806_sorted.bam      2         2.558 0.002692           1.337
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747756_sorted.bam      2         2.381 0.002506           1.378
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747761_sorted.bam      1         1.849 0.001947           1.849
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747777_sorted.bam      1         1.286 0.001354           1.286
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747769_sorted.bam      1         1.210 0.001274           1.210
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747762_sorted.bam      1         1.104 0.001162           1.104
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747781_sorted.bam      1         1.085 0.001142           1.085
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747774_sorted.bam      1         1.038 0.001093           1.038
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747784_sorted.bam      1         1.013 0.001066           1.013
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747755_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747768_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747767_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747766_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747770_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747759_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747757_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747765_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747764_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747776_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747775_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747773_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747771_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747780_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747779_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747782_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747778_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747785_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747786_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747787_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747788_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747789_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747790_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747791_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747783_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747792_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747793_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747795_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747794_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747797_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747798_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747799_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747796_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747800_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747801_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747803_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747802_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747804_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747805_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747807_sorted.bam      0         0.000 0.000000           0.000
+/scratch/las80898/bonasa/sorted_bam_files/SRR25747808_sorted.bam      0         0.000 0.000000           0.000
+Done.
