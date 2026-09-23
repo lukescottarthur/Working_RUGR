@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=terradish-test	                        # Job name
+#SBATCH --job-name=terradish_surface_test	                        # Job name
 #SBATCH --partition=batch		                                # Partition (queue) name
 #SBATCH --ntasks=1			                                    # Single task job
 #SBATCH --cpus-per-task=8		                                # Number of cores per task - match this to the num_threads used by BLAST
@@ -17,4 +17,4 @@ source ${CONDA_BASE}/etc/profile.d/conda.sh
 conda activate r_env_terradish
 
 # run R script
-R --no-save < /home/las80898/GENE8940_parallel_2/terradish_cluster_test.R
+R --no-save < /home/las80898/GENE8940_parallel_2/terradish_surface_test.R
