@@ -18,5 +18,4 @@ source ${CONDA_BASE}/etc/profile.d/conda.sh
 conda activate bonasa_env
 
    
-   
 seqkit stats -a -j 8 /work/hblab/grouse_georgia_reads/*.fq.gz > read_stats.tsv

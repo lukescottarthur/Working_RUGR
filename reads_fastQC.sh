@@ -19,7 +19,7 @@ conda activate bonasa_env
 
 set -euo pipefail
 
-INDIR=/work/hblab/grouse_georgia_reads
+INDIR="/work/hblab/grouse_georgia_reads"
 OUTDIR="/scratch/las80898/bonasa_fastqc"
 
 # If output directory doesn't exist, create it

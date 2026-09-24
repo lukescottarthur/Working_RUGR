@@ -17,7 +17,6 @@ CONDA_BASE=$(conda info --base)
 source ${CONDA_BASE}/etc/profile.d/conda.sh
 conda activate bonasa_env
 
-
-ls /work/hblab/grouse_georgia_reads/*.fq.gz | \ xargs -P 8 -I{} sh -c 'gzip -t "{}" && echo "OK {}" || echo "CORRUPT {}"' > gzip_check.txt
+find /work/hblab/grouse_georgia_reads -name '*.fq.gz' -print0 | xargs -0 -P 8 -I{} sh -c 'gzip -t "{}" && echo "OK {}" || echo "CORRUPT {}"' > gzip_check.txt
 
 grep CORRUPT gzip_check.txt
