@@ -31,3 +31,14 @@ for file in *.sam; do
     base="${file%.sam}"
     samtools sort -O BAM --threads 8 $file > ${OUTDIR}/${base}_sorted.bam
 done
+
+
+
+### add more stuff to samtools
+bwa mem -t 8 -R "@RG\tID:1\tSM:1\tLB:lib1\tPL:ILLUMINA" ref.fa \
+    1.1.trimmed.fq.gz 1.2.trimmed.fq.gz | \
+  samtools fixmate -m -u - - | \
+  samtools sort -u -@ 8 - | \
+  samtools markdup -@ 8 - 1.markdup.bam
+
+samtools index 1.markdup.bam
