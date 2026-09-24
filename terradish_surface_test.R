@@ -84,7 +84,7 @@ terradish_solver_benchmark(surface_test, n_replicates = 2)
 
 
 assessment <- terradish_assess_settings(
-  nd2_gendist ~ 1, data = covariates,
+  nd2_gendist ~ 1, data = surface_test,
   conductance_model = loglinear_conductance,
   measurement_model = mlpe,
   probe_maxit = 2, coarse_probe = TRUE

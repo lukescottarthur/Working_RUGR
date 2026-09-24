@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH --job-name=terradish_surface_test	                        # Job name
+#SBATCH --job-name=terradish_surface_test_2                        # Job name
 #SBATCH --partition=batch		                                # Partition (queue) name
 #SBATCH --ntasks=1			                                    # Single task job
-#SBATCH --cpus-per-task=8		                                # Number of cores per task - match this to the num_threads used by BLAST
-#SBATCH --mem=512gb			                                    # Total memory for job
-#SBATCH --time=26:00:00  		                                # Time limit hrs:min:sec
+#SBATCH --cpus-per-task=4		                                # Number of cores per task - match this to the num_threads used by BLAST
+#SBATCH --mem=128gb			                                    # Total memory for job
+#SBATCH --time=4:00:00  		                                # Time limit hrs:min:sec
 #SBATCH --error=/home/las80898/GENE8940_parallel_2/%x_%A.error    # Standard error log
 #SBATCH --output=/home/las80898/GENE8940_parallel_2/%x_%A.out	# Standard output log
 #SBATCH --mail-user=las80898@uga.edu                            # Where to send mail (replace cbergman with your myid)
