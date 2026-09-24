@@ -1,0 +1,13 @@
+
+
+# remove junk around read names
+for f in *.fq.gz\?*; do
+    mv -- "$f" "${f%%\?*}"
+done
+
+# remove white space
+for f in " "*.fq.gz; do
+    mv -n -- "$f" "${f# }"
+done
+
+# rename to read names??
