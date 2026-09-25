@@ -64,6 +64,14 @@ terra::ncell(covariates_cropped)   # after -- should now be dramatically smaller
 # ---- 7. Scale and build the conductance graph -------------------------------
 covariates <- scale_covariates(covariates_cropped)
 
+# Also check terra's own memory settings on this cluster node
+terra::terraOptions() 
+terra::terraOptions(memfrac = 0.8, memmax = 200, threads = 16) 
+terra::terraOptions()
+
+
+#####
+
 
 surface <- conductance_surface(
   covariates,
@@ -72,25 +80,29 @@ surface <- conductance_surface(
   saveStack  = TRUE
 )
 
-rec <- readRDS("/scratch/las80898/terradish/recommended_settings.rds")
-
-
-fit_IBD <- do.call(terradish, c(
-  list(nd2_gendist ~ 1,
+fit_IBD <- terradish(
+  nd2_gendist ~ 1,
   data              = surface,
   conductance_model = loglinear_conductance,
-  measurement_model = mlpe),
-  rec
-))
+  measurement_model = mlpe,
+  solver           = "direct",
+  solver_control   = list(
+    factorization  = "supernodal_ll",
+    solve_backend  = "cholmod_cpp_cached"
+  )
+)
 
-fit_HLI <- do.call(terradish, c(
-  list(nd2_gendist ~ HLI,
+fit_HLI <- terradish(
+  nd2_gendist ~ HLI,
   data              = surface,
   conductance_model = loglinear_conductance,
-  measurement_model = mlpe),
-  rec
-))
-
+  measurement_model = mlpe,
+  solver           = "direct",
+  solver_control   = list(
+    factorization  = "supernodal_ll",
+    solve_backend  = "cholmod_cpp_cached"
+  )
+)
 
 
 # Inspect grid_result for a well-defined single peak vs. a flat ridge or
@@ -170,5 +182,3 @@ plot(fit_HLI, type = "fit")                       # observed vs. fitted
 plot(fit_HLI, type = "marginal", data = surface,
      support = "focal", support_probs = c(0.01, 0.99),
      clamp_covariates = c("HLI"))
-
-

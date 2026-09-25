@@ -62,31 +62,20 @@ terra::ncell(covariates)           # before
 terra::ncell(covariates_cropped)   # after -- should now be dramatically smaller
 
 # ---- 7. Scale and build the conductance graph -------------------------------
+covariates <- scale_covariates(covariates_cropped)
 
-# Aggregate before building the graph -- fact=3 takes 30m -> 90m,
-# cutting cell count by ~9x; fact=5 -> 150m, cutting by ~25x
-covariates_agg <- terra::aggregate(covariates_cropped, fact = 3, fun = "mean")
-terra::ncell(covariates_agg)   # compare against 17,545,892
+# Also check terra's own memory settings on this cluster node
+terra::terraOptions() 
+terra::terraOptions(memfrac = 0.8, memmax = 200, threads = 16) 
+terra::terraOptions()
 
-covariates_agg <- scale_covariates(covariates_agg)
+# covariates test
+covariates_test <- terra::aggregate(covariates_cropped, fact = 4)  # ~16x fewer cells
+terra::ncell(covariates_test)
 
+system.time({
+  surface_scaling_test <- conductance_surface(
+    covariates_test, nd2_coords, directions = 8, saveStack = TRUE
+  )
+})
 
-surface_test <- conductance_surface(
-  covariates_agg,
-  nd2_coords,
-  directions = 8,
-  saveStack  = TRUE
-)
-
-# NOW benchmark using the graph object, not the raster
-terradish_solver_benchmark(surface_test, n_replicates = 2)
-
-
-
-assessment <- terradish_assess_settings(
-  nd2_gendist ~ 1, data = surface_test,
-  conductance_model = loglinear_conductance,
-  measurement_model = mlpe,
-  probe_maxit = 2, coarse_probe = TRUE
-)
-assessment$recommended
