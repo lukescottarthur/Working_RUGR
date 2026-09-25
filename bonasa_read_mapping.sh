@@ -15,8 +15,11 @@ CONDA_BASE=$(conda info --base)
 source ${CONDA_BASE}/etc/profile.d/conda.sh
 conda activate bonasa_env
 
-# set outdirectory variable
-OUTDIR="/home/las80898/bonasa/mapped_reads2"
+# Stop at the first error (set after conda activation, which can trip on unset variables)
+set -eo pipefail
+
+INDIR=/work/hblab/grouse_georgia_fastp
+OUTDIR=/work/hblab/grouse_georgia_mapped_reads
 
 # If output directory doesn't exist, create it
 if [ ! -d $OUTDIR ]
@@ -25,13 +28,13 @@ then
 fi
 
 # change directory
-cd /home/las80898/bonasa/reads/
+cd $INDIR
 
 # map reads to reference with BWA
 
-for R1 in *_1.fastq_trimmed.fastq; do
+for R1 in *.1.trimmed.fq.gz; do
     # Derive sample name and R2 file
-    base="${R1%_1.fastq_trimmed.fastq}"
-    R2="${base}_2.fastq_trimmed.fastq"
-    bwa mem -t 8 /home/las80898/bonasa/Bumbellus.assembly.fa $R1 $R2 > ${OUTDIR}/${base}.sam
+    base="${R1%.1.trimmed.fq.gz}"
+    R2="${base}.2.trimmed.fq.gz"
+    bwa mem -t 8 /scratch/las80898/bonasa/Bumbellus.assembly.fa $R1 $R2 > ${OUTDIR}/${base}.sam
 done   

@@ -64,6 +64,7 @@ terra::ncell(covariates_cropped)   # after -- should now be dramatically smaller
 # ---- 7. Scale and build the conductance graph -------------------------------
 covariates <- scale_covariates(covariates_cropped)
 
+
 surface <- conductance_surface(
   covariates,
   nd2_coords,
@@ -71,19 +72,25 @@ surface <- conductance_surface(
   saveStack  = TRUE
 )
 
-fit_IBD <- terradish(
-  gendist ~ 1,
-  data              = surface,
-  conductance_model = loglinear_conductance,
-  measurement_model = mlpe
-)
+rec <- readRDS("/scratch/las80898/terradish/recommended_settings.rds")
 
-fit_HLI <- terradish(
-  gendist ~ HLI,          # replace with your covariate name(s)
+
+fit_IBD <- do.call(terradish, c(
+  list(nd2_gendist ~ 1,
   data              = surface,
   conductance_model = loglinear_conductance,
-  measurement_model = mlpe
-)
+  measurement_model = mlpe),
+  rec
+))
+
+fit_HLI <- do.call(terradish, c(
+  list(nd2_gendist ~ HLI,
+  data              = surface,
+  conductance_model = loglinear_conductance,
+  measurement_model = mlpe),
+  rec
+))
+
 
 
 # Inspect grid_result for a well-defined single peak vs. a flat ridge or
